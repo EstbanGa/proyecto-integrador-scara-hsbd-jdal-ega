@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Integrador SCARA</title>
+    <style>
+        /* Estilos base */
+        body {
+            font-family: Arial, sans-serif;
+            background: #1e1e2f; /* Azul oscuro */
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        body.light-mode {
+            background: #7f7f7ff9; /* Gris claro en lugar de blanco brillante */
+            color: #333;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ff9800;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header.light-mode {
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 2px solid #e68900;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+            color: white; /* Color del título en modo oscuro */
+        }
+        body.light-mode header h1 {
+            color: #ffffff; /* Color del título en modo claro */
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        /* Contenedores principales */
+        .diseno-container,
+        .construccion-container {
+            display: flex;
+            gap: 20px; /* Espacio entre columnas */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .subseccion-columna {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .info-visual {
+            flex: 1;
+            display: none; /* Oculto por defecto */
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        header.light-mode nav a {
+            color: #333;
+        }
+        header nav a:hover {
+            color: #ff9800;
+        }
+        header button {
+            background: #efefef;
+            border: none;
+            padding: 10px 20px;
+            color: rgb(0, 0, 0);
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        header button:hover {
+            background: #7f7f7ff9;
+        }
+        section {
+            padding: 0px;
+            margin: 0px 0; /* Eliminamos el margen automático para que ocupe todo el ancho */
+            border-radius: 10px;
+            width: 100%; /* Ocupa todo el ancho */
+        }
+        body.light-mode section {
+            background: #e0e0e0;
+            color: #333;
+        }
+        section h2 {
+            margin-top: 0;
+        }
+        .subseccion {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .subseccion:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+        .card {
+            display: none;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        body.light-mode .card {
+            background: #e0e0e0;
+            color: #333;
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+        body.light-mode footer {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Estilos para la sección "Conoce nuestro grupo" */
+        .grupo-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px; /* Espacio entre las tarjetas */
+            padding: 20px;
+            max-width: 1200px; /* Ancho máximo para 12 columnas */
+            margin: 0 auto;
+        }
+        .integrante-card {
+            flex: 1; /* Cada card ocupa el mismo espacio */
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .integrante-card:hover {
+            transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+        }
+        .integrante-card img {
+            border-radius: 50%; /* Foto redonda */
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .integrante-card h3 {
+            margin: 10px 0;
+            font-size: 1.5em;
+        }
+        .integrante-card p {
+            margin: 5px 0;
+            font-size: 1em;
+            color: #8f8f8f;
+        }
+        body.light-mode .integrante-card {
+            background: #e0e0e0; /* Gris claro */
+            color: #333;
+        }
+        body.light-mode .integrante-card p {
+            color: #666;
+        }
+        /* Estilos para las secciones principales */
+        .seccion-container {
+            width: 100%;
+            max-width: 1200px; /* Ajusta según el ancho deseado (10 o 12 columnas) */
+            margin: 0 auto;
+            padding: 0 20px; /* Espaciado lateral */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Espacio entre elementos */
+        }
+        .subseccion {
+            flex: 1 1 100%; /* Ocupa todo el ancho disponible */
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .subseccion:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+        /* Estilos para la sección de Avances */
+        .avances-section {
+            position: relative;
+            height: 500px; /* Altura de la sección */
+            background-image: url('https://mecaluxco.cdnwm.com/blog/img/brazos-roboticos-funciones.1.1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            overflow: hidden;
+            align-items: center;
+            padding: 0px; /* Espaciado lateral */
+            overflow: hidden; /* Evita que la imagen desborde */
+        }
+
+        body.light-mode .avances-section {
+            position: relative;
+            height: 500px; /* Altura de la sección */
+            background-image: url('https://mecaluxco.cdnwm.com/blog/img/brazos-roboticos-funciones.1.1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0px; /* Espaciado lateral */
+            overflow: hidden; /* Evita que la imagen desborde */
+        }
+        body.light-mode .subseccion:hover {
+            background: #989898; /* Gris un poco más oscuro al hacer hover */
+        }
+        body.light-mode .subseccion {
+            background: #b4b3b3; /* Gris claro para las subsecciones */
+            color: #000000;
+        }
+        .avances-contenido {
+            width: 50%; /* Ocupa las primeras 6 columnas */
+            max-width: 600px; /* Ancho máximo */
+            background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 20px;
+            color: white;
+            text-align: left; /* Alineación a la izquierda */
+        }
+
+        .avances-contenido h2 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+        }
+
+        .barra-progreso {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progreso {
+            height: 100%;
+            background: #ff9800; /* Color de la barra de progreso */
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        /* Ajustes para modo claro */
+        body.light-mode .avances-contenido {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        body.light-mode .barra-progreso {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .progreso {
+            background: #e68900;
+        }
+
+        #mensaje-inicial-diseno,
+        #mensaje-inicial-construccion {
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        body.light-mode #mensaje-inicial-diseno,
+        body.light-mode #mensaje-inicial-construccion {
+            color: #333;
+        }
+
+        /* Ocultar imagen por defecto */
+        .info-visual img {
+            max-width: 100%; /* La imagen no superará el ancho del contenedor */
+            max-height: 100%; /* La imagen no superará la altura del contenedor */
+            border-radius: 10px;
+            object-fit: contain; /* Ajusta la imagen sin deformarla */
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Proyecto Integrador SCARA</h1>
+        <nav>
+            <a href="#grupo">Conoce nuestro grupo</a>
+            <a href="#diseno">Diseño</a>
+            <a href="#construccion">Construcción</a>
+        </nav>
+        <button onclick="toggleMode()">Modo Claro</button>
+    </header>
+    <section class="avances-section">
+        <div class="avances-contenido">
+            <h2>Avances</h2>
+            <div class="barra-progreso">
+                <div class="progreso" style="width: 50%;"></div> <!-- Cambia el porcentaje aquí -->
+            </div>
+        </div>
+    </section>
+    <!-- Sección: Conoce nuestro grupo -->
+    <section id="grupo">
+        <h2>Conoce nuestro grupo</h2>
+        <div class="grupo-container">
+            <!-- Card 1 -->
+            <div class="integrante-card">
+                <img src="https://via.placeholder.com/150" alt="Foto de John Doe">
+                <h3>John Doe</h3>
+                <p><strong>Rol:</strong> Líder de Proyecto</p>
+                <p><strong>Carrera:</strong> Ingeniería Mecánica</p>
+                <p><strong>Correo:</strong> john.doe@example.com</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="integrante-card">
+                <img src="https://via.placeholder.com/150" alt="Foto de Jane Smith">
+                <h3>Jane Smith</h3>
+                <p><strong>Rol:</strong> Diseñadora Electrónica</p>
+                <p><strong>Carrera:</strong> Ingeniería Electrónica</p>
+                <p><strong>Correo:</strong> jane.smith@example.com</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="integrante-card">
+                <img src="https://via.placeholder.com/150" alt="Foto de Alex Johnson">
+                <h3>Alex Johnson</h3>
+                <p><strong>Rol:</strong> Especialista en Manufactura</p>
+                <p><strong>Carrera:</strong> Ingeniería Industrial</p>
+                <p><strong>Correo:</strong> alex.johnson@example.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Diseño -->
+<!-- Sección: Diseño -->
+<section id="diseno">
+    <div class="diseno-container">
+        <!-- Subsecciones de Diseño (6 columnas izquierda) -->
+        <div class="subseccion-columna">
+            <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo', 'diseno')">
+                <h3>Resumen Ejecutivo</h3>
+                <div class="card" id="resumen-ejecutivo">
+                    <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
+                </div>
+            </div>
+            <div class="subseccion" onclick="mostrarSubseccion('proceso-diseno', 'diseno')">
+                <h3>Proceso de Diseño</h3>
+                <div class="card" id="proceso-diseno">
+                    <p>Descripción del proceso de diseño básico y en detalle.</p>
+                </div>
+            </div>
+            <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica', 'diseno')">
+                <h3>Arquitectura Electrónica</h3>
+                <div class="card" id="arquitectura-electronica">
+                    <p>Descripción del cableado y la arquitectura electrónica.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Información visual de Diseño (6 columnas derecha) -->
+        <div class="info-visual" id="info-visual-diseno">
+            <div id="mensaje-inicial-diseno">
+                <h3>Diseño</h3>
+                <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
+            </div>
+            <img src="" alt="Información visual de la subsección" id="imagen-diseno">
+        </div>
+    </div>
+</section>
+
+<!-- Sección: Construcción -->
+<section id="construccion">
+    <div class="construccion-container">
+        <!-- Información visual de Construcción (6 columnas izquierda) -->
+        <div class="info-visual" id="info-visual-construccion">
+            <div id="mensaje-inicial-construccion">
+                <h3>Construcción</h3>
+                <p>En esta sección encontrarás información sobre el proceso de construcción del proyecto SCARA, incluyendo la manufactura, planos, presupuesto y pruebas.</p>
+            </div>
+            <img src="" alt="Información visual de la subsección" id="imagen-construccion">
+        </div>
+        <!-- Subsecciones de Construcción (6 columnas derecha) -->
+        <div class="subseccion-columna">
+            <div class="subseccion" onclick="mostrarSubseccion('proceso-manufactura', 'construccion')">
+                <h3>Proceso de Manufactura</h3>
+                <div class="card" id="proceso-manufactura">
+                    <p>Selección de materiales y procesos de manufactura para el prototipo.</p>
+                </div>
+            </div>
+            <div class="subseccion" onclick="mostrarSubseccion('planos-manufactura', 'construccion')">
+                <h3>Planos de Manufactura</h3>
+                <div class="card" id="planos-manufactura">
+                    <p>Espacio para incluir los planos de manufactura.</p>
+                </div>
+            </div>
+            <div class="subseccion" onclick="mostrarSubseccion('presupuesto-final', 'construccion')">
+                <h3>Presupuesto Final</h3>
+                <div class="card" id="presupuesto-final">
+                    <p>Detalles del presupuesto final del proyecto.</p>
+                </div>
+            </div>
+            <div class="subseccion" onclick="mostrarSubseccion('recopilacion-multimedia', 'construccion')">
+                <h3>Recopilación Multimedia</h3>
+                <div class="card" id="recopilacion-multimedia">
+                    <p>Galería de imágenes y videos del proceso de manufactura y ensamble.</p>
+                </div>
+            </div>
+            <div class="subseccion" onclick="mostrarSubseccion('pruebas-concepto', 'construccion')">
+                <h3>Pruebas y Evaluación</h3>
+                <div class="card" id="pruebas-concepto">
+                    <p>Fotos y videos de las pruebas de concepto y evaluación de resultados.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <div class="subseccion" onclick="mostrarSubseccion('conclusiones')">
+        <h3>Conclusiones</h3>
+        <div class="card" id="conclusiones">
+            <p>Conclusiones derivadas del proceso de diseño, manufactura, ensamble y pruebas.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Proyecto Integrador SCARA</p>
+    </footer>
+
+    <script>
+        // Función para alternar entre modo claro y oscuro
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            const button = document.querySelector('header button');
+            if (body.classList.contains('light-mode')) {
+                button.textContent = 'Modo Oscuro';
+            } else {
+                button.textContent = 'Modo Claro';
+            }
+        }
+
+        // Función para mostrar/ocultar cards
+        function toggleCard(id) {
+            const card = document.getElementById(id);
+            card.style.display = card.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Función para mostrar la subsección y la información visual
+        function mostrarSubseccion(id, seccion) {
+            const cardSeleccionado = document.getElementById(id);
+            const mensajeInicial = document.getElementById(`mensaje-inicial-${seccion}`);
+            const infoVisual = document.getElementById(`info-visual-${seccion}`);
+            const imagen = document.getElementById(`imagen-${seccion}`);
+
+            // Si la subsección ya está abierta, cerrarla y mostrar el mensaje inicial
+            if (cardSeleccionado.style.display === 'block') {
+                reiniciarSeccion(seccion);
+                return;
+            }
+
+            // Ocultar todas las subsecciones y cards de la sección actual
+            const cards = document.querySelectorAll(`#${seccion} .card`);
+            cards.forEach(card => {
+                card.style.display = 'none';
+            });
+
+            // Mostrar la subsección seleccionada
+            cardSeleccionado.style.display = 'block';
+
+            // Ocultar el mensaje inicial de la sección actual
+            mensajeInicial.style.display = 'none';
+
+            // Mostrar la información visual correspondiente
+            infoVisual.style.display = 'flex';
+            imagen.style.display = 'block';
+
+            // Cambiar la imagen según la subsección seleccionada
+            const imagenes = {
+                'resumen-ejecutivo': 'https://media.licdn.com/dms/image/v2/D4D12AQHAMFDcNpV6ig/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1696232206166?e=2147483647&v=beta&t=-eddcvnTbVkw_qrl9hcvfjtAQVxcM5WsmuHlz3VFxi4',
+                'proceso-diseno': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSji5_k6nVjUxezTDQ11BgB7IeCttZyxrHE4w&s',
+                'arquitectura-electronica': 'https://media.es.wired.com/photos/662ac84024e5b5cd38977c46/16:9/w_2580,c_limit/New%20atlas.png',
+                'proceso-manufactura': 'https://www.segurilatam.com/wp-content/uploads/sites/5/2023/01/robots-humanoides-blancos.jpg',
+                'planos-manufactura': 'https://d100mj7v0l85u5.cloudfront.net/s3fs-public/Yumi-Robot-para-ensamblaje-piezas-pequenas-ABB-G.jpg',
+                'presupuesto-final': 'https://frostautomation.com/wp-content/uploads/2022/12/brazo-robotico-industrial-2.jpg',
+                'recopilacion-multimedia': 'https://i.pinimg.com/originals/16/c9/7c/16c97c054637161093b9117c134d4598.png',
+                'pruebas-concepto': 'https://www.esneca.com/wp-content/uploads/clasificacion-de-los-robots.jpg',
+                'conclusiones': 'https://png.pngtree.com/png-clipart/20240719/original/pngtree-small-robots-unleashing-the-future-of-automation-png-image_15586678.png'
+            };
+
+            imagen.src = imagenes[id];
+
+            // Mover la subsección seleccionada al principio de la lista con animación
+            const subseccionColumna = document.querySelector(`#${seccion} .subseccion-columna`);
+            const subseccion = document.querySelector(`#${seccion} .subseccion[onclick*="${id}"]`);
+
+            // Agregar clase de animación
+            subseccion.classList.add('subir-animacion');
+
+            // Eliminar la clase de animación después de que termine
+            setTimeout(() => {
+                subseccion.classList.remove('subir-animacion');
+            }, 300); // Duración de la animación en milisegundos
+        }
+
+        // Función para reiniciar la sección (ocultar subsección y mostrar mensaje inicial)
+        function reiniciarSeccion(seccion) {
+            const cards = document.querySelectorAll(`#${seccion} .card`);
+            cards.forEach(card => {
+                card.style.display = 'none';
+            });
+
+            const mensajeInicial = document.getElementById(`mensaje-inicial-${seccion}`);
+            mensajeInicial.style.display = 'block';
+
+            const infoVisual = document.getElementById(`info-visual-${seccion}`);
+            infoVisual.style.display = 'flex';
+
+            const imagen = document.getElementById(`imagen-${seccion}`);
+            imagen.style.display = 'none';
+        }
+
+        // Reiniciar secciones al cargar la página
+        reiniciarSeccion('diseno');
+        reiniciarSeccion('construccion');
+    </script>
+</body>
+</html>
