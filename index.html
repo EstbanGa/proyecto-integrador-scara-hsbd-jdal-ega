@@ -67,13 +67,15 @@
             gap: 10px;
         }
         .info-visual {
-            flex: 1;
-            display: none; /* Oculto por defecto */
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
+            flex: 1; /* Ocupa el espacio disponible */
+            display: flex; /* Usa flexbox para alinear el contenido */
+            flex-direction: column; /* Apila el contenido verticalmente */
+            align-items: center; /* Centra el contenido horizontalmente */
+            justify-content: center; /* Centra el contenido verticalmente */
+            background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+            border-radius: 10px; /* Bordes redondeados */
+            padding: 20px; /* Espaciado interno */
+            min-height: 300px; /* Altura mínima para que sea visible */
         }
 
         header.light-mode nav a {
@@ -317,6 +319,49 @@
             object-fit: contain; /* Ajusta la imagen sin deformarla */
         }
 
+        .slides-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+
+        .slide-button.prev {
+            left: 10px;
+        }
+
+        .slide-button.next {
+            right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -326,6 +371,7 @@
             <a href="#grupo">Conoce nuestro grupo</a>
             <a href="#diseno">Diseño</a>
             <a href="#construccion">Construcción</a>
+            <a href="control.html">Control</a>
         </nav>
         <button onclick="toggleMode()">Modo Claro</button>
     </header>
@@ -337,6 +383,9 @@
             </div>
         </div>
     </section>
+    <br>
+    <br>
+    <br>
     <!-- Sección: Conoce nuestro grupo -->
     <section id="grupo">
         <h2>Conoce nuestro grupo</h2>
@@ -374,21 +423,21 @@
     <div class="diseno-container">
         <!-- Subsecciones de Diseño (6 columnas izquierda) -->
         <div class="subseccion-columna">
-            <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo', 'diseno')">
+            <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_diseno', 'diseno')">
                 <h3>Resumen Ejecutivo</h3>
-                <div class="card" id="resumen-ejecutivo">
+                <div class="card" id="resumen-ejecutivo_diseno">
                     <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
                 </div>
             </div>
-            <div class="subseccion" onclick="mostrarSubseccion('proceso-diseno', 'diseno')">
+            <div class="subseccion" onclick="mostrarSubseccion('proceso_diseno', 'diseno')">
                 <h3>Proceso de Diseño</h3>
-                <div class="card" id="proceso-diseno">
+                <div class="card" id="proceso_diseno">
                     <p>Descripción del proceso de diseño básico y en detalle.</p>
                 </div>
             </div>
-            <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica', 'diseno')">
+            <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_diseno', 'diseno')">
                 <h3>Arquitectura Electrónica</h3>
-                <div class="card" id="arquitectura-electronica">
+                <div class="card" id="arquitectura-electronica_diseno">
                     <p>Descripción del cableado y la arquitectura electrónica.</p>
                 </div>
             </div>
@@ -396,10 +445,54 @@
         <!-- Información visual de Diseño (6 columnas derecha) -->
         <div class="info-visual" id="info-visual-diseno">
             <div id="mensaje-inicial-diseno">
-                <h3>Diseño</h3>
+                <h3>Control</h3>
                 <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
             </div>
-            <img src="" alt="Información visual de la subsección" id="imagen-diseno">
+            <!-- Carrusel para "Resumen Ejecutivo" -->
+            <div class="slides-container" id="slides-resumen-ejecutivo_diseno" style="display: none;">
+                <div class="slide">
+                    <img src="imagenes/Imagen_2.jpg" alt="Imagen 1">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_3.jpg" alt="Imagen 2">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_1.jpg" alt="Imagen 3">
+                </div>
+                <!-- Botones de navegación -->
+                <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_diseno')">&#10094;</button>
+                <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_diseno')">&#10095;</button>
+            </div>
+            <!-- Carrusel para "Proceso de Diseño" -->
+            <div class="slides-container" id="slides-proceso_diseno" style="display: none;">
+                <div class="slide">
+                    <img src="imagenes/Imagen_1.jpg" alt="Imagen 1">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_2.jpg" alt="Imagen 2">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_3.jpg" alt="Imagen 3">
+                </div>
+                <!-- Botones de navegación -->
+                <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_diseno')">&#10094;</button>
+                <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_diseno')">&#10095;</button>
+            </div>
+            <!-- Carrusel para "Arquitectura Electrónica" -->
+            <div class="slides-container" id="slides-arquitectura-electronica_diseno" style="display: none;">
+                <div class="slide">
+                    <img src="imagenes/Imagen_3.jpg" alt="Imagen 1">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_1.jpg" alt="Imagen 2">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_2.jpg" alt="Imagen 3">
+                </div>
+                <!-- Botones de navegación -->
+                <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_diseno')">&#10094;</button>
+                <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_diseno')">&#10095;</button>
+            </div>
         </div>
     </div>
 </section>
@@ -410,44 +503,75 @@
         <!-- Información visual de Construcción (6 columnas izquierda) -->
         <div class="info-visual" id="info-visual-construccion">
             <div id="mensaje-inicial-construccion">
-                <h3>Construcción</h3>
-                <p>En esta sección encontrarás información sobre el proceso de construcción del proyecto SCARA, incluyendo la manufactura, planos, presupuesto y pruebas.</p>
+                <h3>Control</h3>
+                <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
             </div>
-            <img src="" alt="Información visual de la subsección" id="imagen-construccion">
+            <!-- Carrusel para "Resumen Ejecutivo" -->
+            <div class="slides-container" id="slides-resumen-ejecutivo_construccion" style="display: none;">
+                <div class="slide">
+                    <img src="imagenes/Imagen_2.jpg" alt="Imagen 1">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_3.jpg" alt="Imagen 2">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_1.jpg" alt="Imagen 3">
+                </div>
+                <!-- Botones de navegación -->
+                <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_construccion')">&#10094;</button>
+                <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_construccion')">&#10095;</button>
+            </div>
+            <!-- Carrusel para "Proceso de Diseño" -->
+            <div class="slides-container" id="slides-proceso_construccion" style="display: none;">
+                <div class="slide">
+                    <img src="imagenes/Imagen_1.jpg" alt="Imagen 1">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_2.jpg" alt="Imagen 2">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_3.jpg" alt="Imagen 3">
+                </div>
+                <!-- Botones de navegación -->
+                <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_construccion')">&#10094;</button>
+                <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_construccion')">&#10095;</button>
+            </div>
+            <!-- Carrusel para "Arquitectura Electrónica" -->
+            <div class="slides-container" id="slides-arquitectura-electronica_construccion" style="display: none;">
+                <div class="slide">
+                    <img src="imagenes/Imagen_3.jpg" alt="Imagen 1">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_1.jpg" alt="Imagen 2">
+                </div>
+                <div class="slide">
+                    <img src="imagenes/Imagen_2.jpg" alt="Imagen 3">
+                </div>
+                <!-- Botones de navegación -->
+                <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_construccion')">&#10094;</button>
+                <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_construccion')">&#10095;</button>
+            </div>
         </div>
         <!-- Subsecciones de Construcción (6 columnas derecha) -->
         <div class="subseccion-columna">
-            <div class="subseccion" onclick="mostrarSubseccion('proceso-manufactura', 'construccion')">
-                <h3>Proceso de Manufactura</h3>
-                <div class="card" id="proceso-manufactura">
-                    <p>Selección de materiales y procesos de manufactura para el prototipo.</p>
+            <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_construccion', 'construccion')">
+                <h3>Resumen Ejecutivo</h3>
+                <div class="card" id="resumen-ejecutivo_construccion">
+                    <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
                 </div>
             </div>
-            <div class="subseccion" onclick="mostrarSubseccion('planos-manufactura', 'construccion')">
-                <h3>Planos de Manufactura</h3>
-                <div class="card" id="planos-manufactura">
-                    <p>Espacio para incluir los planos de manufactura.</p>
+            <div class="subseccion" onclick="mostrarSubseccion('proceso_construccion', 'construccion')">
+                <h3>Proceso de Diseño</h3>
+                <div class="card" id="proceso_construccion">
+                    <p>Descripción del proceso de diseño básico y en detalle.</p>
                 </div>
             </div>
-            <div class="subseccion" onclick="mostrarSubseccion('presupuesto-final', 'construccion')">
-                <h3>Presupuesto Final</h3>
-                <div class="card" id="presupuesto-final">
-                    <p>Detalles del presupuesto final del proyecto.</p>
+            <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_construccion', 'construccion')">
+                <h3>Arquitectura Electrónica</h3>
+                <div class="card" id="arquitectura-electronica_construccion">
+                    <p>Descripción del cableado y la arquitectura electrónica.</p>
                 </div>
             </div>
-            <div class="subseccion" onclick="mostrarSubseccion('recopilacion-multimedia', 'construccion')">
-                <h3>Recopilación Multimedia</h3>
-                <div class="card" id="recopilacion-multimedia">
-                    <p>Galería de imágenes y videos del proceso de manufactura y ensamble.</p>
-                </div>
-            </div>
-            <div class="subseccion" onclick="mostrarSubseccion('pruebas-concepto', 'construccion')">
-                <h3>Pruebas y Evaluación</h3>
-                <div class="card" id="pruebas-concepto">
-                    <p>Fotos y videos de las pruebas de concepto y evaluación de resultados.</p>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
@@ -475,8 +599,8 @@
                 button.textContent = 'Modo Claro';
             }
         }
-
-        // Función para mostrar/ocultar cards
+    
+        // Función para mostrar/ocultar cards (sin cambios)
         function toggleCard(id) {
             const card = document.getElementById(id);
             card.style.display = card.style.display === 'block' ? 'none' : 'block';
@@ -487,7 +611,7 @@
             const cardSeleccionado = document.getElementById(id);
             const mensajeInicial = document.getElementById(`mensaje-inicial-${seccion}`);
             const infoVisual = document.getElementById(`info-visual-${seccion}`);
-            const imagen = document.getElementById(`imagen-${seccion}`);
+            const slidesContainer = infoVisual.querySelector(`#slides-${id}`);
 
             // Si la subsección ya está abierta, cerrarla y mostrar el mensaje inicial
             if (cardSeleccionado.style.display === 'block') {
@@ -504,42 +628,24 @@
             // Mostrar la subsección seleccionada
             cardSeleccionado.style.display = 'block';
 
-            // Ocultar el mensaje inicial de la sección actual
+            // Ocultar el mensaje inicial
             mensajeInicial.style.display = 'none';
 
-            // Mostrar la información visual correspondiente
-            infoVisual.style.display = 'flex';
-            imagen.style.display = 'block';
+            // Ocultar todos los carruseles de la sección
+            const todosSlides = infoVisual.querySelectorAll('.slides-container');
+            todosSlides.forEach(slide => {
+                slide.style.display = 'none';
+            });
 
-            // Cambiar la imagen según la subsección seleccionada
-            const imagenes = {
-                'resumen-ejecutivo': 'https://media.licdn.com/dms/image/v2/D4D12AQHAMFDcNpV6ig/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1696232206166?e=2147483647&v=beta&t=-eddcvnTbVkw_qrl9hcvfjtAQVxcM5WsmuHlz3VFxi4',
-                'proceso-diseno': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSji5_k6nVjUxezTDQ11BgB7IeCttZyxrHE4w&s',
-                'arquitectura-electronica': 'https://media.es.wired.com/photos/662ac84024e5b5cd38977c46/16:9/w_2580,c_limit/New%20atlas.png',
-                'proceso-manufactura': 'https://www.segurilatam.com/wp-content/uploads/sites/5/2023/01/robots-humanoides-blancos.jpg',
-                'planos-manufactura': 'https://d100mj7v0l85u5.cloudfront.net/s3fs-public/Yumi-Robot-para-ensamblaje-piezas-pequenas-ABB-G.jpg',
-                'presupuesto-final': 'https://frostautomation.com/wp-content/uploads/2022/12/brazo-robotico-industrial-2.jpg',
-                'recopilacion-multimedia': 'https://i.pinimg.com/originals/16/c9/7c/16c97c054637161093b9117c134d4598.png',
-                'pruebas-concepto': 'https://www.esneca.com/wp-content/uploads/clasificacion-de-los-robots.jpg',
-                'conclusiones': 'https://png.pngtree.com/png-clipart/20240719/original/pngtree-small-robots-unleashing-the-future-of-automation-png-image_15586678.png'
-            };
+            // Mostrar el carrusel correspondiente a la subsección
+            slidesContainer.style.display = 'block';
 
-            imagen.src = imagenes[id];
-
-            // Mover la subsección seleccionada al principio de la lista con animación
-            const subseccionColumna = document.querySelector(`#${seccion} .subseccion-columna`);
-            const subseccion = document.querySelector(`#${seccion} .subseccion[onclick*="${id}"]`);
-
-            // Agregar clase de animación
-            subseccion.classList.add('subir-animacion');
-
-            // Eliminar la clase de animación después de que termine
-            setTimeout(() => {
-                subseccion.classList.remove('subir-animacion');
-            }, 300); // Duración de la animación en milisegundos
+            // Reiniciar el carrusel de imágenes
+            reiniciarCarrusel(id);
         }
 
         // Función para reiniciar la sección (ocultar subsección y mostrar mensaje inicial)
+        // Función para reiniciar la sección (modificada)
         function reiniciarSeccion(seccion) {
             const cards = document.querySelectorAll(`#${seccion} .card`);
             cards.forEach(card => {
@@ -547,13 +653,45 @@
             });
 
             const mensajeInicial = document.getElementById(`mensaje-inicial-${seccion}`);
+            const infoVisual = document.getElementById(`info-visual-${seccion}`);
+            const todosSlides = infoVisual.querySelectorAll('.slides-container');
+
+            // Mostrar el mensaje inicial
             mensajeInicial.style.display = 'block';
 
-            const infoVisual = document.getElementById(`info-visual-${seccion}`);
-            infoVisual.style.display = 'flex';
+            // Ocultar todos los carruseles
+            todosSlides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+        }
 
-            const imagen = document.getElementById(`imagen-${seccion}`);
-            imagen.style.display = 'none';
+        // Variables para controlar el índice de los slides (sin cambios)
+        let slideIndex = {};
+
+        // Función para reiniciar el carrusel de imágenes (modificada)
+        function reiniciarCarrusel(id) {
+            slideIndex[id] = 0;
+            mostrarSlide(slideIndex[id], id);
+        }
+
+        // Función para cambiar de slide (modificada)
+        function cambiarSlide(n, id) {
+            slideIndex[id] += n;
+            const slides = document.querySelectorAll(`#slides-${id} .slide`);
+            if (slideIndex[id] >= slides.length) slideIndex[id] = 0;
+            if (slideIndex[id] < 0) slideIndex[id] = slides.length - 1;
+            mostrarSlide(slideIndex[id], id);
+        }
+
+        // Función para mostrar el slide actual (modificada)
+        function mostrarSlide(index, id) {
+            const slides = document.querySelectorAll(`#slides-${id} .slide`);
+            slides.forEach((slide, i) => {
+                slide.style.display = 'none'; // Ocultar todas las imágenes
+                if (i === index) {
+                    slide.style.display = 'block'; // Mostrar solo la imagen actual
+                }
+            });
         }
 
         // Reiniciar secciones al cargar la página

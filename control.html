@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Integrador SCARA</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #1e1e2f; 
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        body.light-mode {
+            background: #7f7f7ff9; 
+            color: #333;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ff9800;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header.light-mode {
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 2px solid #e68900;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+            color: white; /* Color del título en modo oscuro */
+        }
+        body.light-mode header h1 {
+            color: #ffffff; /* Color del título en modo claro */
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        /* Contenedores principales */
+        .control_1-container,
+        .control_2-container,
+        .control_3-container,
+        .control_4-container,
+        .control_5-container{
+            display: flex;
+            gap: 20px; /* Espacio entre columnas */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .subseccion-columna {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .info-visual {
+            flex: 1; /* Ocupa el espacio disponible */
+            display: flex; /* Usa flexbox para alinear el contenido */
+            flex-direction: column; /* Apila el contenido verticalmente */
+            align-items: center; /* Centra el contenido horizontalmente */
+            justify-content: center; /* Centra el contenido verticalmente */
+            background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+            border-radius: 10px; /* Bordes redondeados */
+            padding: 20px; /* Espaciado interno */
+            min-height: 300px; /* Altura mínima para que sea visible */
+        }
+
+        header.light-mode nav a {
+            color: #333;
+        }
+        header nav a:hover {
+            color: #ff9800;
+        }
+        header button {
+            background: #efefef;
+            border: none;
+            padding: 10px 20px;
+            color: rgb(0, 0, 0);
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        header button:hover {
+            background: #7f7f7ff9;
+        }
+        section {
+            padding: 0px;
+            margin: 0px 0; /* Eliminamos el margen automático para que ocupe todo el ancho */
+            border-radius: 10px;
+            width: 100%; /* Ocupa todo el ancho */
+        }
+        body.light-mode section {
+            background: #e0e0e0;
+            color: #333;
+        }
+        section h2 {
+            margin-top: 0;
+        }
+        .subseccion {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .subseccion:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+        .card {
+            display: none;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        body.light-mode .card {
+            background: #e0e0e0;
+            color: #333;
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+        }
+        body.light-mode footer {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Estilos para la sección "Conoce nuestro grupo" */
+        .grupo-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px; /* Espacio entre las tarjetas */
+            padding: 20px;
+            max-width: 1200px; /* Ancho máximo para 12 columnas */
+            margin: 0 auto;
+        }
+        .integrante-card {
+            flex: 1; /* Cada card ocupa el mismo espacio */
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .integrante-card:hover {
+            transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra para resaltar */
+        }
+        .integrante-card img {
+            border-radius: 50%; /* Foto redonda */
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .integrante-card h3 {
+            margin: 10px 0;
+            font-size: 1.5em;
+        }
+        .integrante-card p {
+            margin: 5px 0;
+            font-size: 1em;
+            color: #8f8f8f;
+        }
+        body.light-mode .integrante-card {
+            background: #e0e0e0; /* Gris claro */
+            color: #333;
+        }
+        body.light-mode .integrante-card p {
+            color: #666;
+        }
+        /* Estilos para las secciones principales */
+        .seccion-container {
+            width: 100%;
+            max-width: 1200px; /* Ajusta según el ancho deseado (10 o 12 columnas) */
+            margin: 0 auto;
+            padding: 0 20px; /* Espaciado lateral */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Espacio entre elementos */
+        }
+        .subseccion {
+            flex: 1 1 100%; /* Ocupa todo el ancho disponible */
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .subseccion:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+        /* Estilos para la sección de Avances */
+        .avances-section {
+            position: relative;
+            height: 500px; /* Altura de la sección */
+            background-image: url('https://mecaluxco.cdnwm.com/blog/img/brazos-roboticos-funciones.1.1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            overflow: hidden;
+            align-items: center;
+            padding: 0px; /* Espaciado lateral */
+            overflow: hidden; /* Evita que la imagen desborde */
+        }
+
+        body.light-mode .avances-section {
+            position: relative;
+            height: 500px; /* Altura de la sección */
+            background-image: url('https://mecaluxco.cdnwm.com/blog/img/brazos-roboticos-funciones.1.1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0px; /* Espaciado lateral */
+            overflow: hidden; /* Evita que la imagen desborde */
+        }
+        body.light-mode .subseccion:hover {
+            background: #989898; /* Gris un poco más oscuro al hacer hover */
+        }
+        body.light-mode .subseccion {
+            background: #b4b3b3; /* Gris claro para las subsecciones */
+            color: #000000;
+        }
+        .avances-contenido {
+            width: 50%; /* Ocupa las primeras 6 columnas */
+            max-width: 600px; /* Ancho máximo */
+            background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 20px;
+            color: white;
+            text-align: left; /* Alineación a la izquierda */
+        }
+
+        .avances-contenido h2 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+        }
+
+        .barra-progreso {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progreso {
+            height: 100%;
+            background: #ff9800; /* Color de la barra de progreso */
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        /* Ajustes para modo claro */
+        body.light-mode .avances-contenido {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        body.light-mode .barra-progreso {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .progreso {
+            background: #e68900;
+        }
+
+        #mensaje-inicial-control_1, #mensaje-inicial-control_2,
+        #mensaje-inicial-control_3,#mensaje-inicial-control_4,#mensaje-inicial-control_5 {
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        body.light-mode #mensaje-inicial-control_1, body.light-mode#mensaje-inicial-control_2,
+        body.light-mode#mensaje-inicial-control_3, body.light-mode#mensaje-inicial-control_4, body.light-mode#mensaje-inicial-control_5 {
+            color: #333;
+        }
+
+        /* Ocultar imagen por defecto */
+        .info-visual img {
+            max-width: 100%; /* La imagen no superará el ancho del contenedor */
+            max-height: 100%; /* La imagen no superará la altura del contenedor */
+            border-radius: 10px;
+            object-fit: contain; /* Ajusta la imagen sin deformarla */
+        }
+        .slides-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+
+        .slide-button.prev {
+            left: 10px;
+        }
+
+        .slide-button.next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Proyecto Integrador SCARA</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="#control_1">Control</a>
+        </nav>
+        <button onclick="toggleMode()">Modo Claro</button>
+    </header>
+    <section class="avances-section">
+        <div class="avances-contenido">
+            <h2>Avances</h2>
+            <div class="barra-progreso">
+                <div class="progreso" style="width: 50%;"></div> <!-- Cambia el porcentaje aquí -->
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+
+    <!-- Sección: Control_1 -->
+    <section id="control_1">
+        <div class="control_1-container">
+            <!-- Subsecciones de Diseño (6 columnas izquierda) -->
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_1', 'control_1')">
+                    <h3>Resumen Ejecutivo</h3>
+                    <div class="card" id="resumen-ejecutivo_control_1">
+                        <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('proceso_control_1', 'control_1')">
+                    <h3>Proceso de Diseño</h3>
+                    <div class="card" id="proceso_control_1">
+                        <p>Descripción del proceso de diseño básico y en detalle.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_1', 'control_1')">
+                    <h3>Arquitectura Electrónica</h3>
+                    <div class="card" id="arquitectura-electronica_control_1">
+                        <p>Descripción del cableado y la arquitectura electrónica.</p>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Información visual de Diseño (6 columnas derecha) -->
+            <div class="info-visual" id="info-visual-control_1">
+                <div id="mensaje-inicial-control_1">
+                    <h3>Control</h3>
+                    <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
+                </div>
+                <!-- Carrusel para "Resumen Ejecutivo" -->
+                <div class="slides-container" id="slides-resumen-ejecutivo_control_1" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_1')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_1')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Proceso de Diseño" -->
+                <div class="slides-container" id="slides-proceso_control_1" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_control_1')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_control_1')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-arquitectura-electronica_control_1" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_1')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_1')">&#10095;</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección: Control_2 -->
+    <section id="control_2">
+        <div class="control_2-container">
+            <!-- Información visual de Diseño (6 columnas derecha) -->
+            <div class="info-visual" id="info-visual-control_2">
+                <div id="mensaje-inicial-control_2">
+                    <h3>Control</h3>
+                    <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
+                </div>
+                <!-- Carrusel para "Resumen Ejecutivo" -->
+                <div class="slides-container" id="slides-resumen-ejecutivo_control_2" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_2')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_2')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Proceso de Diseño" -->
+                <div class="slides-container" id="slides-proceso_control_2" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_control_2')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_control_2')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-arquitectura-electronica_control_2" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_2')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_2')">&#10095;</button>
+                </div>
+            </div>
+            <!-- Subsecciones de Diseño (6 columnas izquierda) -->
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_2', 'control_2')">
+                    <h3>Resumen Ejecutivo</h3>
+                    <div class="card" id="resumen-ejecutivo_control_2">
+                        <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('proceso_control_2', 'control_2')">
+                    <h3>Proceso de Diseño</h3>
+                    <div class="card" id="proceso_control_2">
+                        <p>Descripción del proceso de diseño básico y en detalle.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_2', 'control_2')">
+                    <h3>Arquitectura Electrónica</h3>
+                    <div class="card" id="arquitectura-electronica_control_2">
+                        <p>Descripción del cableado y la arquitectura electrónica.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Control_3 -->
+    <section id="control_3">
+        <div class="control_3-container">
+            <!-- Subsecciones de Diseño (6 columnas izquierda) -->
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_3', 'control_3')">
+                    <h3>Resumen Ejecutivo</h3>
+                    <div class="card" id="resumen-ejecutivo_control_3">
+                        <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('proceso_control_3', 'control_3')">
+                    <h3>Proceso de Diseño</h3>
+                    <div class="card" id="proceso_control_3">
+                        <p>Descripción del proceso de diseño básico y en detalle.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_3', 'control_3')">
+                    <h3>Arquitectura Electrónica</h3>
+                    <div class="card" id="arquitectura-electronica_control_3">
+                        <p>Descripción del cableado y la arquitectura electrónica.</p>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Información visual de Diseño (6 columnas derecha) -->
+            <div class="info-visual" id="info-visual-control_3">
+                <div id="mensaje-inicial-control_3">
+                    <h3>Control</h3>
+                    <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
+                </div>
+                <!-- Carrusel para "Resumen Ejecutivo" -->
+                <div class="slides-container" id="slides-resumen-ejecutivo_control_3" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_3')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_3')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Proceso de Diseño" -->
+                <div class="slides-container" id="slides-proceso_control_3" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_control_3')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_control_3')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-arquitectura-electronica_control_3" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_3')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_3')">&#10095;</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección: Control_4 -->
+    <section id="control_4">
+        <div class="control_4-container">
+            <!-- Información visual de Diseño (6 columnas derecha) -->
+            <div class="info-visual" id="info-visual-control_4">
+                <div id="mensaje-inicial-control_4">
+                    <h3>Control</h3>
+                    <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
+                </div>
+                <!-- Carrusel para "Resumen Ejecutivo" -->
+                <div class="slides-container" id="slides-resumen-ejecutivo_control_4" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_4')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_4')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Proceso de Diseño" -->
+                <div class="slides-container" id="slides-proceso_control_4" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_control_4')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_control_4')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-arquitectura-electronica_control_4" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_4')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_4')">&#10095;</button>
+                </div>
+            </div>
+            <!-- Subsecciones de Diseño (6 columnas izquierda) -->
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_4', 'control_4')">
+                    <h3>Resumen Ejecutivo</h3>
+                    <div class="card" id="resumen-ejecutivo_control_4">
+                        <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('proceso_control_4', 'control_4')">
+                    <h3>Proceso de Diseño</h3>
+                    <div class="card" id="proceso_control_4">
+                        <p>Descripción del proceso de diseño básico y en detalle.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_4', 'control_4')">
+                    <h3>Arquitectura Electrónica</h3>
+                    <div class="card" id="arquitectura-electronica_control_4">
+                        <p>Descripción del cableado y la arquitectura electrónica.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Control_2 -->
+    <section id="control_5">
+        <div class="control_5-container">
+            <!-- Subsecciones de Diseño (6 columnas izquierda) -->
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_5', 'control_5')">
+                    <h3>Resumen Ejecutivo</h3>
+                    <div class="card" id="resumen-ejecutivo_control_5">
+                        <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('proceso_control_5', 'control_5')">
+                    <h3>Proceso de Diseño</h3>
+                    <div class="card" id="proceso_control_5">
+                        <p>Descripción del proceso de diseño básico y en detalle.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_5', 'control_5')">
+                    <h3>Arquitectura Electrónica</h3>
+                    <div class="card" id="arquitectura-electronica_control_5">
+                        <p>Descripción del cableado y la arquitectura electrónica.</p>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Información visual de Diseño (6 columnas derecha) -->
+            <div class="info-visual" id="info-visual-control_5">
+                <div id="mensaje-inicial-control_5">
+                    <h3>Control</h3>
+                    <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
+                </div>
+                <!-- Carrusel para "Resumen Ejecutivo" -->
+                <div class="slides-container" id="slides-resumen-ejecutivo_control_5" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_5')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_5')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Proceso de Diseño" -->
+                <div class="slides-container" id="slides-proceso_control_5" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_control_5')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_control_5')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-arquitectura-electronica_control_5" style="display: none;">
+                    <div class="slide">
+                        <img src="imagenes/Imagen_3.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_1.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <img src="imagenes/Imagen_2.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_5')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_5')">&#10095;</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Proyecto Integrador SCARA</p>
+    </footer>
+
+    <script>
+        // Función para alternar entre modo claro y oscuro (sin cambios)
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            const button = document.querySelector('header button');
+            if (body.classList.contains('light-mode')) {
+                button.textContent = 'Modo Oscuro';
+            } else {
+                button.textContent = 'Modo Claro';
+            }
+        }
+    
+        // Función para mostrar/ocultar cards (sin cambios)
+        function toggleCard(id) {
+            const card = document.getElementById(id);
+            card.style.display = card.style.display === 'block' ? 'none' : 'block';
+        }
+    
+        // Función para mostrar la subsección y la información visual (modificada)
+        function mostrarSubseccion(id, seccion) {
+            const cardSeleccionado = document.getElementById(id);
+            const mensajeInicial = document.getElementById(`mensaje-inicial-${seccion}`);
+            const infoVisual = document.getElementById(`info-visual-${seccion}`);
+            const slidesContainer = infoVisual.querySelector(`#slides-${id}`);
+
+            // Si la subsección ya está abierta, cerrarla y mostrar el mensaje inicial
+            if (cardSeleccionado.style.display === 'block') {
+                reiniciarSeccion(seccion);
+                return;
+            }
+
+            // Ocultar todas las subsecciones y cards de la sección actual
+            const cards = document.querySelectorAll(`#${seccion} .card`);
+            cards.forEach(card => {
+                card.style.display = 'none';
+            });
+
+            // Mostrar la subsección seleccionada
+            cardSeleccionado.style.display = 'block';
+
+            // Ocultar el mensaje inicial
+            mensajeInicial.style.display = 'none';
+
+            // Ocultar todos los carruseles de la sección
+            const todosSlides = infoVisual.querySelectorAll('.slides-container');
+            todosSlides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+
+            // Mostrar el carrusel correspondiente a la subsección
+            slidesContainer.style.display = 'block';
+
+            // Reiniciar el carrusel de imágenes
+            reiniciarCarrusel(id);
+        }
+
+        // Función para reiniciar la sección (modificada)
+        function reiniciarSeccion(seccion) {
+            const cards = document.querySelectorAll(`#${seccion} .card`);
+            cards.forEach(card => {
+                card.style.display = 'none';
+            });
+
+            const mensajeInicial = document.getElementById(`mensaje-inicial-${seccion}`);
+            const infoVisual = document.getElementById(`info-visual-${seccion}`);
+            const todosSlides = infoVisual.querySelectorAll('.slides-container');
+
+            // Mostrar el mensaje inicial
+            mensajeInicial.style.display = 'block';
+
+            // Ocultar todos los carruseles
+            todosSlides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+        }
+
+        // Variables para controlar el índice de los slides (sin cambios)
+        let slideIndex = {};
+
+        // Función para reiniciar el carrusel de imágenes (modificada)
+        function reiniciarCarrusel(id) {
+            slideIndex[id] = 0;
+            mostrarSlide(slideIndex[id], id);
+        }
+
+        // Función para cambiar de slide (modificada)
+        function cambiarSlide(n, id) {
+            slideIndex[id] += n;
+            const slides = document.querySelectorAll(`#slides-${id} .slide`);
+            if (slideIndex[id] >= slides.length) slideIndex[id] = 0;
+            if (slideIndex[id] < 0) slideIndex[id] = slides.length - 1;
+            mostrarSlide(slideIndex[id], id);
+        }
+
+        // Función para mostrar el slide actual (modificada)
+        function mostrarSlide(index, id) {
+            const slides = document.querySelectorAll(`#slides-${id} .slide`);
+            slides.forEach((slide, i) => {
+                slide.style.display = 'none'; // Ocultar todas las imágenes
+                if (i === index) {
+                    slide.style.display = 'block'; // Mostrar solo la imagen actual
+                }
+            });
+        }
+
+        // Reiniciar todas las secciones al cargar la página (sin cambios)
+        reiniciarSeccion('control_1');
+        reiniciarSeccion('control_2');
+        reiniciarSeccion('control_3');
+        reiniciarSeccion('control_4');
+        reiniciarSeccion('control_5');
+    </script>
+</body>
+</html>
