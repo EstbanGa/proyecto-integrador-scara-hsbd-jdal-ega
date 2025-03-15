@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +56,8 @@
 
         /* Contenedores principales */
         .diseno-container,
-        .construccion-container {
+        .construccion-container,
+        .conclusion-container {
             display: flex;
             gap: 20px; /* Espacio entre columnas */
             max-width: 1200px;
@@ -276,6 +281,7 @@
             background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             overflow: hidden;
+            position: relative;
         }
 
         .progreso {
@@ -283,6 +289,25 @@
             background: #ff9800; /* Color de la barra de progreso */
             border-radius: 10px;
             transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para mejor legibilidad */
+        }
+
+        .etiquetas-progreso {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 14px;
+            color: white;
+        }
+
+        body.light-mode .etiquetas-progreso {
+            color: #333; /* Color para modo claro */
         }
 
         /* Ajustes para modo claro */
@@ -300,14 +325,18 @@
         }
 
         #mensaje-inicial-diseno,
-        #mensaje-inicial-construccion {
+        #mensaje-inicial-construccion,
+        #mensaje-inicial-conclusion {
             text-align: center;
+            font-size: 2rem; /* Tamaño más grande */
+            font-style: italic; /* Cursiva */
             padding: 20px;
             color: white;
         }
 
         body.light-mode #mensaje-inicial-diseno,
-        body.light-mode #mensaje-inicial-construccion {
+        body.light-mode #mensaje-inicial-construccion,
+        body.light-mode #mensaje-inicial-conclusion {
             color: #333;
         }
 
@@ -362,6 +391,13 @@
         .slide-button.next {
             right: 10px;
         }
+        .titulo-destacado {
+            font-size: 2.5em; /* Tamaño más grande */
+            font-style: italic; /* Cursiva */
+            font-weight: bold; /* Negrita */
+            color: #333; /* Color del texto */
+            text-align: center; /* Centrado */
+        }
     </style>
 </head>
 <body>
@@ -371,7 +407,7 @@
             <a href="#grupo">Conoce nuestro grupo</a>
             <a href="#diseno">Diseño</a>
             <a href="#construccion">Construcción</a>
-            <a href="control.html">Control</a>
+            <a href="#conclusion">Conclusiones</a>
         </nav>
         <button onclick="toggleMode()">Modo Claro</button>
     </header>
@@ -379,7 +415,11 @@
         <div class="avances-contenido">
             <h2>Avances</h2>
             <div class="barra-progreso">
-                <div class="progreso" style="width: 50%;"></div> <!-- Cambia el porcentaje aquí -->
+                <div class="progreso" style="width: 50%;">50%</div> <!-- Texto dentro de la barra -->
+            </div>
+            <div class="etiquetas-progreso">
+                <span>0%</span> <!-- Etiqueta de inicio -->
+                <span>100%</span> <!-- Etiqueta de fin -->
             </div>
         </div>
     </section>
@@ -392,199 +432,468 @@
         <div class="grupo-container">
             <!-- Card 1 -->
             <div class="integrante-card">
-                <img src="https://via.placeholder.com/150" alt="Foto de John Doe">
-                <h3>John Doe</h3>
-                <p><strong>Rol:</strong> Líder de Proyecto</p>
-                <p><strong>Carrera:</strong> Ingeniería Mecánica</p>
-                <p><strong>Correo:</strong> john.doe@example.com</p>
+                <img src="Imagenes/Foto_Herick.jpg" alt="Foto de Herick">
+                <h3>Herick Steven Durán Burgo</h3>
+                <p><strong>Carrera:</strong> Ingeniería Mecatrónica</p>
+                <p><strong>Correo:</strong> herick.duran@eia.edu.co</p>
             </div>
             <!-- Card 2 -->
             <div class="integrante-card">
-                <img src="https://via.placeholder.com/150" alt="Foto de Jane Smith">
-                <h3>Jane Smith</h3>
-                <p><strong>Rol:</strong> Diseñadora Electrónica</p>
-                <p><strong>Carrera:</strong> Ingeniería Electrónica</p>
-                <p><strong>Correo:</strong> jane.smith@example.com</p>
+                <img src="Imagenes/Foto_JuanDajpg.jpg" alt="Foto de Juan">
+                <h3>Juan David Arbeláez López</h3>
+                <p><strong>Carrera:</strong> Ingeniería Mecatrónica</p>
+                <p><strong>Correo:</strong> juan.arbelaez53@eia.edu.co</p>
             </div>
             <!-- Card 3 -->
             <div class="integrante-card">
-                <img src="https://via.placeholder.com/150" alt="Foto de Alex Johnson">
-                <h3>Alex Johnson</h3>
-                <p><strong>Rol:</strong> Especialista en Manufactura</p>
-                <p><strong>Carrera:</strong> Ingeniería Industrial</p>
-                <p><strong>Correo:</strong> alex.johnson@example.com</p>
+                <img src="Imagenes/Foto_Estebanjpg.jpg" alt="Foto de Esteban">
+                <h3>Esteban Garzón Ardila</h3>
+                <p><strong>Carrera:</strong> Ingeniería Mecatrónica</p>
+                <p><strong>Correo:</strong> esteban.garzon@eia.edu.co</p>
             </div>
         </div>
     </section>
 
     <!-- Sección: Diseño -->
-<!-- Sección: Diseño -->
-<section id="diseno">
-    <div class="diseno-container">
-        <!-- Subsecciones de Diseño (6 columnas izquierda) -->
-        <div class="subseccion-columna">
-            <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_diseno', 'diseno')">
-                <h3>Resumen Ejecutivo</h3>
-                <div class="card" id="resumen-ejecutivo_diseno">
-                    <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
-                </div>
-            </div>
-            <div class="subseccion" onclick="mostrarSubseccion('proceso_diseno', 'diseno')">
-                <h3>Proceso de Diseño</h3>
-                <div class="card" id="proceso_diseno">
-                    <p>Descripción del proceso de diseño básico y en detalle.</p>
-                </div>
-            </div>
-            <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_diseno', 'diseno')">
-                <h3>Arquitectura Electrónica</h3>
-                <div class="card" id="arquitectura-electronica_diseno">
-                    <p>Descripción del cableado y la arquitectura electrónica.</p>
-                </div>
-            </div>
-        </div>
-        <!-- Información visual de Diseño (6 columnas derecha) -->
-        <div class="info-visual" id="info-visual-diseno">
-            <div id="mensaje-inicial-diseno">
-                <h3>Control</h3>
-                <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
-            </div>
-            <!-- Carrusel para "Resumen Ejecutivo" -->
-            <div class="slides-container" id="slides-resumen-ejecutivo_diseno" style="display: none;">
-                <div class="slide">
-                    <img src="Imagenes/Imagen_2.jpg" alt="Imagen 1">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_3.jpg" alt="Imagen 2">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_1.jpg" alt="Imagen 3">
-                </div>
-                <!-- Botones de navegación -->
-                <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_diseno')">&#10094;</button>
-                <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_diseno')">&#10095;</button>
-            </div>
-            <!-- Carrusel para "Proceso de Diseño" -->
-            <div class="slides-container" id="slides-proceso_diseno" style="display: none;">
-                <div class="slide">
-                    <img src="Imagenes/Imagen_1.jpg" alt="Imagen 1">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_2.jpg" alt="Imagen 2">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_3.jpg" alt="Imagen 3">
-                </div>
-                <!-- Botones de navegación -->
-                <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_diseno')">&#10094;</button>
-                <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_diseno')">&#10095;</button>
-            </div>
-            <!-- Carrusel para "Arquitectura Electrónica" -->
-            <div class="slides-container" id="slides-arquitectura-electronica_diseno" style="display: none;">
-                <div class="slide">
-                    <img src="Imagenes/Imagen_3.jpg" alt="Imagen 1">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_1.jpg" alt="Imagen 2">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_2.jpg" alt="Imagen 3">
-                </div>
-                <!-- Botones de navegación -->
-                <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_diseno')">&#10094;</button>
-                <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_diseno')">&#10095;</button>
-            </div>
-        </div>
-    </div>
-</section>
+    <section id="diseno">
+        <div class="diseno-container">
+            <!-- Subsecciones de Diseño (6 columnas izquierda) -->
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_diseno', 'diseno')">
+                    <h3>Resumen Ejecutivo</h3>
+                    <div class="card" id="resumen-ejecutivo_diseno">
+                        <p style="text-align: justify;">Nuestro proyecto integrador consiste en el desarrollo de un robot SCARA . El robot está equipado con dos motores Pololu de 200 RPM, cuatro finales de carrera para limitar su movimiento. Para su control, utilizamos una Raspberry Pi Pico programada en MicroPython, lo que nos permitió gestionar de manera eficiente los movimientos y funciones del robot. Además, integramos un driver L298N para controlar los motores, asegurando un manejo adecuado de la velocidad y dirección.
 
-<!-- Sección: Construcción -->
-<section id="construccion">
-    <div class="construccion-container">
-        <!-- Información visual de Construcción (6 columnas izquierda) -->
-        <div class="info-visual" id="info-visual-construccion">
-            <div id="mensaje-inicial-construccion">
-                <h3>Control</h3>
-                <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
-            </div>
-            <!-- Carrusel para "Resumen Ejecutivo" -->
-            <div class="slides-container" id="slides-resumen-ejecutivo_construccion" style="display: none;">
-                <div class="slide">
-                    <img src="Imagenes/Imagen_2.jpg" alt="Imagen 1">
+                            En el diseño mecánico, implementamos piezas 3D fabricadas con impresión 3D, lo que nos permitió adaptar la estructura del robot a nuestras necesidades. Para la programación y depuración del código, utilizamos Thonny 2, una herramienta que facilitó el desarrollo del software en MicroPython. El robot SCARA resultante demuestra un funcionamiento coherente y es capaz de realizar tareas básicas de automatización, cumpliendo con los objetivos planteados en el curso.</p>
+                    </div>
                 </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_3.jpg" alt="Imagen 2">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_1.jpg" alt="Imagen 3">
-                </div>
-                <!-- Botones de navegación -->
-                <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_construccion')">&#10094;</button>
-                <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_construccion')">&#10095;</button>
-            </div>
-            <!-- Carrusel para "Proceso de Diseño" -->
-            <div class="slides-container" id="slides-proceso_construccion" style="display: none;">
-                <div class="slide">
-                    <img src="Imagenes/Imagen_1.jpg" alt="Imagen 1">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_2.jpg" alt="Imagen 2">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_3.jpg" alt="Imagen 3">
-                </div>
-                <!-- Botones de navegación -->
-                <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_construccion')">&#10094;</button>
-                <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_construccion')">&#10095;</button>
-            </div>
-            <!-- Carrusel para "Arquitectura Electrónica" -->
-            <div class="slides-container" id="slides-arquitectura-electronica_construccion" style="display: none;">
-                <div class="slide">
-                    <img src="Imagenes/Imagen_3.jpg" alt="Imagen 1">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_1.jpg" alt="Imagen 2">
-                </div>
-                <div class="slide">
-                    <img src="Imagenes/Imagen_2.jpg" alt="Imagen 3">
-                </div>
-                <!-- Botones de navegación -->
-                <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_construccion')">&#10094;</button>
-                <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_construccion')">&#10095;</button>
-            </div>
-        </div>
-        <!-- Subsecciones de Construcción (6 columnas derecha) -->
-        <div class="subseccion-columna">
-            <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_construccion', 'construccion')">
-                <h3>Resumen Ejecutivo</h3>
-                <div class="card" id="resumen-ejecutivo_construccion">
-                    <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
-                </div>
-            </div>
-            <div class="subseccion" onclick="mostrarSubseccion('proceso_construccion', 'construccion')">
-                <h3>Proceso de Diseño</h3>
-                <div class="card" id="proceso_construccion">
-                    <p>Descripción del proceso de diseño básico y en detalle.</p>
-                </div>
-            </div>
-            <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_construccion', 'construccion')">
-                <h3>Arquitectura Electrónica</h3>
-                <div class="card" id="arquitectura-electronica_construccion">
-                    <p>Descripción del cableado y la arquitectura electrónica.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                <div class="subseccion" onclick="mostrarSubseccion('proceso_diseno', 'diseno')">
+                    <h3>Proceso de Diseño</h3>
+                    <div class="card" id="proceso_diseno">
+                        <p style="text-align: justify;">Se diseñaron dos prototipos en el desarrollo del robot SCARA. El primero se caracterizaba por ser más bajo y compacto, priorizando una estructura reducida para optimizar el espacio y facilitar las pruebas de funcionamiento. Sin embargo, tras evaluar su desempeño, se identificaron oportunidades de mejora en términos de alcance y estabilidad, lo que llevó a ajustes en la altura y dimensiones generales en una versión posterior.
 
-    <div class="subseccion" onclick="mostrarSubseccion('conclusiones')">
-        <h3>Conclusiones</h3>
-        <div class="card" id="conclusiones">
-            <p>Conclusiones derivadas del proceso de diseño, manufactura, ensamble y pruebas.</p>
-        </div>
-    </div>
+                            El diseño preliminar del robot SCARA surgió tras analizar modelos comerciales y referencias propias, considerando factores como alcance, precisión y materiales. Se estudiaron diferentes configuraciones mecánicas para definir criterios como la longitud de los brazos y la disposición de los ejes. A través de bocetos, simulaciones y cálculos, se optimizó la estructura para garantizar estabilidad y eficiencia. Este proceso permitió iterar en el diseño hasta lograr una configuración equilibrada entre compacidad y funcionalidad. Finalmente, el ultimo prototipo tuvo una altura total de 300 mm, con una base y un brazo principal de 150 mm, dimensiones que sirvieron de referencia para futuras mejoras</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_diseno', 'diseno')">
+                    <h3>Arquitectura Electrónica</h3>
+                    <div class="card" id="arquitectura-electronica_diseno">
+                        <p style="text-align: justify;">Se diseñó un esquema que muestra los componentes eléctricos y electrónicos con sus respectivas conexiones, facilitando la comprensión del sistema y asegurando la correcta integración de los elementos dentro del robot SCARA. El sistema de control del robot está compuesto por una Raspberry Pi 4, que se comunica con el controlador myRio-1900 a través de una conexión USB-A. Este controlador gestiona las señales y la alimentación de los actuadores y sensores del sistema.
 
+                            El esquema permite visualizar la estructura del sistema y asegurar una correcta distribución de las señales. En la siguiente fase del proyecto, se optimizarán las conexiones en el diseño del PCB para mejorar la integración de los componentes. Se ha asegurado la correcta distribución de los componentes, la definición de las pistas de conexión con la mínima interferencia posible, garantizando un buen funcionamiento y el orden de los elementos electrónicos.</p>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Información visual de Diseño (6 columnas derecha) -->
+            <div class="info-visual" id="info-visual-diseno">
+                <div id="mensaje-inicial-diseno">
+                    <h3>Diseño</h3>
+                </div>
+                <!-- Carrusel para "Resumen Ejecutivo" -->
+                <div class="slides-container" id="slides-resumen-ejecutivo_diseno" style="display: none;">
+                    <div class="slide">
+                        
+                        <img src="Imagenes/Imagen_general_SCARA.png" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+
+                        <img src="Imagenes/Imagen_1_diseño_3d.jpg" alt="Vista general del diseño 3D">
+                    </div>
+                    <div class="slide">
+
+                        <img src="Imagenes/Imagen_1_diseño_electronica.jpg" alt="Imagen 1">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_diseno')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_diseno')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Proceso de Diseño" -->
+                <div class="slides-container" id="slides-proceso_diseno" style="display: none;">
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <h4>Prototipo usado - Vista general 1</h4>
+                        <img src="Imagenes/Imagen_1_diseño_3d.jpg" alt="Vista general del diseño 3D">
+                    </div>
+                    <div class="slide">
+                        <h4>Prototipo usado - Vista general 2</h4>
+                        <img src="Imagenes/Imagen_2_diseño_3d.jpg" alt="Vista general del diseño 3D">
+                    </div>
+                    <div class="slide">
+                        <h4>Prototipo usado - Vista Interna</h4>
+                        <img src="Imagenes/Imagen_3_diseño_3d.jpg" alt="Vista general del diseño 3D">
+                    </div>
+                    <div class="slide">
+                        <h4>Funcionamiento del prototipo</h4>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/LYI8onZ0_6Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="slide">
+                        <h4>Prototipo 1 - Vista General </h4>
+                        <img src="Imagenes/Imagen_5_diseño_prototipo1_3d.jpg" alt="Prototipo 1 - Detalle del brazo">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <h4>Prototipo 1 - Vista General Base</h4>
+                        <img src="Imagenes/Imagen_1_diseño_prototipo1_3d.jpg" alt="Prototipo 1 - Vista frontal">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <h4>Prototipo 1 - Vista Transmisión</h4>
+                        <img src="Imagenes/Imagen_2_diseño_prototipo1_3d.jpg" alt="Prototipo 1 - Vista lateral">
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="slide">
+                        <h4>Prototipo 1 - Vista Interior 1</h4>
+                        <img src="Imagenes/Imagen_3_diseño_prototipo1_3d.jpg" alt="Prototipo 1 - Vista superior">
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="slide">
+                        <h4>Prototipo 1 - Detalle Interior 2</h4>
+                        <img src="Imagenes/Imagen_4_diseño_prototipo1_3d.jpg" alt="Prototipo 1 - Detalle de la base">
+                    </div>
+                    <!-- Slide 6 -->
+
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_diseno')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_diseno')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-arquitectura-electronica_diseno" style="display: none;">
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <h4>Esquema de conexiones eléctricas</h4> <!-- Título de la imagen -->
+                        <img src="Imagenes/Imagen_1_diseño_electronica.jpg" alt="Imagen 1">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <h4>Diagrama de control SCARA</h4> <!-- Título de la imagen -->
+                        <img src="Imagenes/Imagen_2_diseño_electronica.jpg" alt="Imagen 2">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <h4>Distribución de pistas en el PCB</h4> <!-- Título de la imagen -->
+                        <img src="Imagenes/Imagen_3_diseño_electronica.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_diseno')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_diseno')">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Construcción -->
+    <section id="construccion">
+        <div class="construccion-container">
+            <!-- Información visual de Construcción (6 columnas izquierda) -->
+            <div class="info-visual" id="info-visual-construccion">
+                <div id="mensaje-inicial-construccion">
+                    <h3>Construcción</h3>
+                </div>
+
+                <div class="slides-container" id="slides-proceso-manufactura_construccion" style="display: none;">
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <h4>Ensamblaje completo con electrónica</h4>
+                        <img src="Imagenes/Imagen_1.ensamble_completo.jpg" alt="Ensamblaje completo con electrónica">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <h4>Vista general del ensamblaje</h4>
+                        <img src="Imagenes/Imagen_1_ensamble_general.jpg" alt="Vista general del ensamblaje">
+                    </div>
+
+                    <div class="slide">
+                        <h4>Proceso de impresión 3D</h4>
+                        <img src="Imagenes/Imagen_3_proceso_impresion.jpg" alt="Proceso de impresión 3D - Pieza 3">
+                    </div>
+                    <div class="slide">
+                        <h4>Proceso de impresión 3D</h4>
+                        <img src="Imagenes/Imagen_2_proceso_impresion.jpg" alt="Proceso de impresión 3D - Pieza 2">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <h4>Proceso de impresión 3D</h4>
+                        <img src="Imagenes/Imagen_1_proceso_impresion.jpg" alt="Proceso de impresión 3D - Pieza 1">
+                    </div>
+                    <!-- Slide 6 -->
+                    <div class="slide">
+                        <h4>Piezas terminadas - Vista general</h4>
+                        <img src="Imagenes/Imagen_1.piezas_terminadas_general.jpg" alt="Piezas terminadas - Vista general">
+                    </div>
+                    <!-- Slide 7 -->
+                    <div class="slide">
+                        <h4>Ensamblaje de la base</h4>
+                        <img src="Imagenes/Imagen_1_ensamble_base.jpg" alt="Ensamblaje de la base">
+                    </div>
+                    <!-- Slide 8 -->
+                    <div class="slide">
+                        <h4>Ensamblaje del brazo</h4>
+                        <img src="Imagenes/Imagen_1_ensamble_brazo.jpg" alt="Ensamblaje del brazo">
+                    </div>
+                    <!-- Slide 9 -->
+                    <div class="slide">
+                        <h4>Construcción general del robot</h4>
+                        <img src="Imagenes/Imagen_1_contruccion_general.jpg" alt="Construcción general del robot">
+                    </div>
+                    <!-- Slide 10 -->
+                    <div class="slide">
+                        <h4>Ensamblaje interno del brazo con electrónica</h4>
+                        <img src="Imagenes/Imagen_1_ensamble_interno_brazo.jpg" alt="Ensamblaje interno del brazo con electrónica">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso-manufactura_construccion')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'proceso-manufactura_construccion')">&#10095;</button>
+                </div>
+
+                <div class="slides-container" id="slides-electronica_construccion" style="display: none;">
+                    <div class="slide">
+                        <h4>Conexion General Drivers-Raspberry Pi Pico</h4>
+                        <img src="Imagenes/Conexion_Cables_2.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <h4>Conexion General Motores</h4>
+                        <img src="Imagenes/Conexion_Cables_3.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <h4>Codigo en Thonny - MicroPython</h4>
+                        <pre><code class="language-python">
+                    from machine import Pin, PWM
+                    import time
+                    # Configuración de pines de motores
+                    ena = PWM(Pin(10))
+                    motor1_in1 = Pin(11, Pin.OUT)
+                    motor1_in2 = Pin(12, Pin.OUT)
+                    enb = PWM(Pin(15))
+                    motor2_in3 = Pin(13, Pin.OUT)
+                    motor2_in4 = Pin(14, Pin.OUT)
+                    # Configuración de velocidad
+                    ena.freq(1000)
+                    enb.freq(1000)
+                    speed = 30000
+                    ena.duty_u16(0)
+                    enb.duty_u16(0)
+                    # Configuración de finales de carrera
+                    limit1 = Pin(6, Pin.IN, Pin.PULL_UP)
+                    limit2 = Pin(7, Pin.IN, Pin.PULL_UP)
+                    limit3 = Pin(8, Pin.IN, Pin.PULL_UP)
+                    limit4 = Pin(9, Pin.IN, Pin.PULL_UP)
+                    # Funciones de control de motores
+                    def motor1_forward():
+                        ena.duty_u16(speed)
+                        motor1_in1.value(1)
+                        motor1_in2.value(0)
+                    def motor1_backward():
+                        ena.duty_u16(speed)
+                        motor1_in1.value(0)
+                        motor1_in2.value(1)
+                    def motor1_stop():
+                        ena.duty_u16(0)
+                        motor1_in1.value(0)
+                        motor1_in2.value(0)
+                    def motor2_forward():
+                        enb.duty_u16(speed)
+                        motor2_in3.value(1)
+                        motor2_in4.value(0)
+                    def motor2_backward():
+                        enb.duty_u16(speed)
+                        motor2_in3.value(0)
+                        motor2_in4.value(1)
+                    def motor2_stop():
+                        enb.duty_u16(0)
+                        motor2_in3.value(0)
+                        motor2_in4.value(0)
+                    # Rutina de homing
+                    def home_routine():
+                        print("Moviendo motor 1 hacia final de carrera 1")
+                        motor1_forward()
+                        while limit1.value() == 1:
+                            pass
+                        motor1_stop()
+                        time.sleep(0.5)
+                        print("Moviendo motor 1 hacia final de carrera 2")
+                        motor1_backward()
+                        while limit2.value() == 1:
+                            pass
+                        motor1_stop()
+                        time.sleep(0.5)
+                        print("Regresando motor 1 a posición inicial")
+                        motor1_forward()
+                        time.sleep(1)
+                        motor1_stop()
+                        time.sleep(1)
+                        print("Moviendo motor 2 hacia final de carrera 3")
+                        motor2_forward()
+                        while limit3.value() == 1:
+                            pass
+                        motor2_stop()
+                        time.sleep(0.5)
+                        print("Moviendo motor 2 hacia final de carrera 4")
+                        motor2_backward()
+                        while limit4.value() == 1:
+                            pass
+                        motor2_stop()
+                        time.sleep(0.5)
+                        print("Regresando motor 2 a posición inicial")
+                        motor2_forward()
+                        time.sleep(1)
+                        motor2_stop()
+                        time.sleep(0.5)
+                    home_routine()
+                        </code></pre>
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'electronica_construccion')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'electronica_construccion')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-pruebas-evaluacion_construccion" style="display: none;">
+                    <div class="slide">
+                        <img src="Imagenes/EnProceso.jpg" alt="Imagen 1">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'pruebas-evaluacion_construccion')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'pruebas-evaluacion_construccion')">&#10095;</button>
+                </div>
+                <div class="slides-container" id="slides-presupuesto_construccion" style="display: none;">
+                    <div class="slide">
+                        <h4>Presupuesto Actual</h4>
+                        <img src="Imagenes/Presupuesto.jpg" alt="Imagen 1">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'presupuesto_construccion')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'presupuesto_construccion')">&#10095;</button>
+                </div>
+            </div>
+            <!-- Subsecciones de Construcción (6 columnas derecha) -->
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('proceso-manufactura_construccion', 'construccion')">
+                    <h3>Proceso de Manufactura</h3>
+                    <div class="card" id="proceso-manufactura_construccion">
+                        <p style="text-align: justify;">
+                            Una vez finalizado el diseño en 3D y validado mediante simulaciones, se procedió a la fase de manufactura física del robot SCARA. Este proceso implicó la fabricación y ensamblaje de las piezas, así como la integración de los componentes mecánicos y electrónicos.<br><br>
+                            <strong>Fabricación de Piezas:</strong> Las piezas del robot se fabricaron utilizando impresión 3D, lo que permitió obtener componentes precisos y personalizados según el diseño. Los materiales seleccionados para la impresión garantizaron un equilibrio entre resistencia y ligereza, optimizando el desempeño del robot. Las piezas impresas incluyeron la base, los brazos, los soportes de los motores y las carcasas para los componentes electrónicos.<br><br>
+                            <strong>Ensamblaje Mecánico:</strong> El ensamblaje se realizó siguiendo el diseño previamente establecido, utilizando tornillos de diferentes medidas (M2 y M3) para asegurar las piezas. Se emplearon rodamientos en las articulaciones para garantizar un movimiento suave y preciso. Además, se integraron poleas de 20 y 60 dientes junto con correas de transmisión para sincronizar el movimiento de los brazos y mantener la precisión en las operaciones.<br><br>
+                            <strong>Integración de Componentes:</strong> Durante el ensamblaje, se aseguró que todas las piezas encajaran correctamente, verificando la alineación de los ejes y la tensión de las correas. Los motores se fijaron en sus respectivos soportes, y se conectaron a las poleas para transmitir el movimiento a los brazos del robot. Este proceso requirió ajustes iterativos para garantizar que el sistema funcionara de manera óptima.
+                        </p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('electronica_construccion', 'construccion')">
+                    <h3>Construccion Electrónica</h3>
+                    <div class="card" id="electronica_construccion">
+                        <p style="text-align: justify;">La construcción electrónica del robot SCARA se basó en la integración de componentes clave como la Raspberry Pi Pico, el driver de motores L298N, los motores con encoder y los finales de carrera. Las conexiones se realizaron de la siguiente manera:</p>
+
+                        <p style="text-align: justify;"><strong>Alimentación:</strong> Se conectó una fuente de 5V a la entrada VSYS de la Raspberry Pi Pico para alimentarla, mientras que el driver de motores recibió 12V para operar los motores de manera eficiente.</p>
+                        
+                        <p style="text-align: justify;"><strong>Conexión de motores:</strong> Los dos motores se conectaron a las salidas del driver (OUT1, OUT2, OUT3 y OUT4), permitiendo controlar su dirección y velocidad. La Raspberry Pi Pico se encargó de enviar las señales de control al driver a través de pines GPIO configurados como salidas.</p>
+                        
+                        <p style="text-align: justify;"><strong>Finales de carrera:</strong> Se conectaron cuatro finales de carrera a la Raspberry Pi Pico, utilizando pines GPIO configurados como entradas con resistencias de pull-up. Estos sensores permitieron detectar los límites físicos del movimiento del brazo, lo que fue fundamental para la rutina de homing y para evitar daños por sobrecarga.</p>
+                        
+                        <p style="text-align: justify;">El funcionamiento general de la electrónica se centró en controlar los motores para mover el brazo del robot de manera precisa. La Raspberry Pi Pico envió señales al driver para activar los motores en direcciones específicas, mientras que los finales de carrera proporcionaron retroalimentación sobre la posición del brazo. Esto permitió implementar una rutina de homing, donde el brazo se mueve hacia los límites físicos y luego regresa a una posición inicial predefinida.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('pruebas-evaluacion_construccion', 'construccion')">
+                    <h3>Pruebas y Evaluación</h3>
+                    <div class="card" id="pruebas-evaluacion_construccion">
+                        <p style="text-align: justify;">En Proceso de correccion...</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('presupuesto_construccion', 'construccion')">
+                    <h3>Presupuesto</h3>
+                    <div class="card" id="presupuesto_construccion">
+                        <p style="text-align: justify;">El desarrollo del robot SCARA requirió una inversión significativa en materiales y componentes, incluyendo filamento para impresión 3D, acrílico, MDF, motoreductores con encoder, servomotores, finales de carrera, borneras, drivers para motores, poleas, varillas para ejes y tornillos, entre otros. Además, se utilizaron componentes electrónicos clave como la Raspberry Pi Pico y la Raspberry Pi 4, junto con una tarjeta microSD de 32 GB. Cabe destacar que algunos de estos elementos, como la Raspberry Pi 4 y la tarjeta microSD, fueron proporcionados por la universidad, lo que ayudó a optimizar los costos del proyecto. En conjunto, estos recursos permitieron la fabricación, ensamblaje y puesta en marcha de un prototipo funcional, equilibrando calidad y eficiencia en el uso de los materiales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Conclusion -->
+    <section id="conclusion">
+        <div class="conclusion-container">
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('logros_conclusion', 'conclusion')">
+                    <h3>Logros y Aprendizajes</h3>
+                    <div class="card" id="logros_conclusion">
+                        <p style="text-align: justify;">El desarrollo de este proyecto ha sido una experiencia valiosa, no solo por los resultados obtenidos, sino también por los aprendizajes derivados de los errores y retos enfrentados. Aunque hubo dificultades, como la fractura del impreso en 3D, estos errores permitieron identificar áreas críticas de mejora. Por ejemplo, se comprendió la importancia de realizar pruebas más exhaustivas en el diseño mecánico y de seleccionar adecuadamente los parámetros de impresión para garantizar la resistencia de las piezas.
+                            Además, los desafíos técnicos, como el tensado de las correas y la gestión del largo de los cables, reforzaron la necesidad de prestar atención a los detalles en la fase de diseño y ensamblaje. Estos problemas, aunque afectaron la entrega, sirvieron como lecciones prácticas para futuras iteraciones del proyecto. En conclusión, este proceso ha dejado aprendizajes clave que serán fundamentales para mejorar y avanzar en el desarrollo del robot SCARA.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('retos_conclusion', 'conclusion')">
+                    <h3>Retos</h3>
+                    <div class="card" id="retos_conclusion">
+                        <p style="text-align: justify;">Uno de los mayores retos fue lograr que el robot se moviera de forma fluida y precisa, lo que requirió un tensado adecuado de las correas de distribución y ajustes iterativos en el ensamblaje. Este proceso demandó múltiples pruebas y revisiones para garantizar que los movimientos fueran suaves y sin irregularidades, lo que implicó un esfuerzo significativo en la calibración y el ajuste de los componentes mecánicos. Además, el tiempo fue un factor crítico en todo el proyecto, ya que cada fase, desde el diseño en 3D hasta la fabricación y las pruebas, requirió una planificación rigurosa para cumplir con los plazos establecidos. La coordinación entre el diseño, la manufactura y la integración de los sistemas fue clave para avanzar de manera eficiente, aunque en ocasiones los imprevistos técnicos y la necesidad de ajustes retrasaron el progreso.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('error_conclusion', 'conclusion')">
+                    <h3>Errores</h3>
+                    <div class="card" id="error_conclusion">
+                        <p style="text-align: justify;">Durante el desarrollo del proyecto, se presentaron varios errores que afectaron significativamente el proceso y, en particular, en el momento de la sustentación. El principal fallo fue no considerar adecuadamente la distribución de la carga al mover el brazo del robot, lo que generó una ruptura crítica en el soporte de unión entre el eje y el brazo. Este problema se agravó debido a la baja densidad de impresión utilizada en algunas piezas, lo que las hizo propensas a fracturarse incluso con impactos leves. La fractura del eje en 3D, sin duda, impidió que el prototipo funcionara al momento de la entrega.
+
+                            Otro error significativo fue el diseño inadecuado del largo de los cables, que, debido al movimiento constante del brazo, se desconectaban repetidamente, interrumpiendo el funcionamiento del sistema. Estos problemas, aunque identificados durante las pruebas, no fueron resueltos, lo que afectó directamente la calidad robot y su sustentación.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="info-visual" id="info-visual-conclusion">
+                <div id="mensaje-inicial-conclusion">
+                    <h3>Conclusiones</h3>
+                </div>
+
+                <div class="slides-container" id="slides-logros_conclusion" style="display: none;">
+                    <div class="slide">
+                        <h4>Comparación Diseño actual vs Primer Diseño</h4>
+                        <img src="Imagenes/Final_VS_Inicial.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="slide">
+                        <h4>Software Inventor Autodesk</h4>
+                        <img src="Imagenes/Inventor.png" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <h4>Software Thonny - MicroPython</h4>
+                        <img src="Imagenes/Thonny.jpg" alt="Imagen 2">
+                    </div>
+
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'logros_conclusion')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'logros_conclusion')">&#10095;</button>
+                </div>
+
+                <div class="slides-container" id="slides-retos_conclusion" style="display: none;">
+                    <div class="slide">
+                        <h4>Reto en Tension de la Correa</h4>
+                        <img src="Imagenes/Correas.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <h4>Reto en la Organizacion y Largo de Cables</h4>
+                        <img src="Imagenes/Cables.jpg" alt="Imagen 2">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'retos_conclusion')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'retos_conclusion')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-error_conclusion" style="display: none;">
+                    <div class="slide">
+                        <h4>Fractura Soporte Eje-Brazo</h4>
+                        <img src="Imagenes/Error_1.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <h4>Fractura Eje-Base 1</h4>
+                        <img src="Imagenes/Error_2.jpg" alt="Imagen 2">
+                    </div>
+                    <div class="slide">
+                        <h4>Fractura Eje-Base 2</h4>
+                        <img src="Imagenes/Error_3.jpg" alt="Imagen 3">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'error_conclusion')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'error_conclusion')">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer>
-        <p>&copy; 2025 Proyecto Integrador SCARA</p>
+        <p>Universidad EIA</p>
     </footer>
 
     <script>
@@ -611,7 +920,7 @@
             const cardSeleccionado = document.getElementById(id);
             const mensajeInicial = document.getElementById(`mensaje-inicial-${seccion}`);
             const infoVisual = document.getElementById(`info-visual-${seccion}`);
-            const slidesContainer = infoVisual.querySelector(`#slides-${id}`);
+            const slidesContainer = infoVisual ? infoVisual.querySelector(`#slides-${id}`) : null;
 
             // Si la subsección ya está abierta, cerrarla y mostrar el mensaje inicial
             if (cardSeleccionado.style.display === 'block') {
@@ -628,24 +937,31 @@
             // Mostrar la subsección seleccionada
             cardSeleccionado.style.display = 'block';
 
-            // Ocultar el mensaje inicial
-            mensajeInicial.style.display = 'none';
+            // Ocultar el mensaje inicial (si existe)
+            if (mensajeInicial) {
+                mensajeInicial.style.display = 'none';
+            }
 
-            // Ocultar todos los carruseles de la sección
-            const todosSlides = infoVisual.querySelectorAll('.slides-container');
-            todosSlides.forEach(slide => {
-                slide.style.display = 'none';
-            });
+            // Ocultar todos los carruseles de la sección (si existen)
+            if (infoVisual) {
+                const todosSlides = infoVisual.querySelectorAll('.slides-container');
+                todosSlides.forEach(slide => {
+                    slide.style.display = 'none';
+                });
 
-            // Mostrar el carrusel correspondiente a la subsección
-            slidesContainer.style.display = 'block';
+                // Mostrar el carrusel correspondiente a la subsección (si existe)
+                if (slidesContainer) {
+                    slidesContainer.style.display = 'block';
+                }
+            }
 
-            // Reiniciar el carrusel de imágenes
-            reiniciarCarrusel(id);
+            // Reiniciar el carrusel de imágenes (si existe)
+            if (slidesContainer) {
+                reiniciarCarrusel(id);
+            }
         }
 
         // Función para reiniciar la sección (ocultar subsección y mostrar mensaje inicial)
-        // Función para reiniciar la sección (modificada)
         function reiniciarSeccion(seccion) {
             const cards = document.querySelectorAll(`#${seccion} .card`);
             cards.forEach(card => {
@@ -654,15 +970,19 @@
 
             const mensajeInicial = document.getElementById(`mensaje-inicial-${seccion}`);
             const infoVisual = document.getElementById(`info-visual-${seccion}`);
-            const todosSlides = infoVisual.querySelectorAll('.slides-container');
 
-            // Mostrar el mensaje inicial
-            mensajeInicial.style.display = 'block';
+            // Mostrar el mensaje inicial (si existe)
+            if (mensajeInicial) {
+                mensajeInicial.style.display = 'block';
+            }
 
-            // Ocultar todos los carruseles
-            todosSlides.forEach(slide => {
-                slide.style.display = 'none';
-            });
+            // Ocultar todos los carruseles de la sección (si existen)
+            if (infoVisual) {
+                const todosSlides = infoVisual.querySelectorAll('.slides-container');
+                todosSlides.forEach(slide => {
+                    slide.style.display = 'none';
+                });
+            }
         }
 
         // Variables para controlar el índice de los slides (sin cambios)
@@ -697,6 +1017,7 @@
         // Reiniciar secciones al cargar la página
         reiniciarSeccion('diseno');
         reiniciarSeccion('construccion');
+        reiniciarSeccion('conclusion');
     </script>
 </body>
 </html>
