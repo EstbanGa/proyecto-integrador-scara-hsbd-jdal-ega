@@ -54,8 +54,7 @@
         .control_1-container,
         .control_2-container,
         .control_3-container,
-        .control_4-container,
-        .control_5-container{
+        .control_4-container{
             display: flex;
             gap: 20px; /* Espacio entre columnas */
             max-width: 1200px;
@@ -303,14 +302,14 @@
         }
 
         #mensaje-inicial-control_1, #mensaje-inicial-control_2,
-        #mensaje-inicial-control_3,#mensaje-inicial-control_4,#mensaje-inicial-control_5 {
+        #mensaje-inicial-control_3,#mensaje-inicial-control_4{
             text-align: center;
             padding: 20px;
             color: white;
         }
 
         body.light-mode #mensaje-inicial-control_1, body.light-mode#mensaje-inicial-control_2,
-        body.light-mode#mensaje-inicial-control_3, body.light-mode#mensaje-inicial-control_4, body.light-mode#mensaje-inicial-control_5 {
+        body.light-mode#mensaje-inicial-control_3, body.light-mode#mensaje-inicial-control_4{
             color: #333;
         }
 
@@ -393,21 +392,38 @@
             <!-- Subsecciones de Diseño (6 columnas izquierda) -->
             <div class="subseccion-columna">
                 <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_1', 'control_1')">
-                    <h3>Resumen Ejecutivo</h3>
+                    <h3>Análisis de la Respuesta</h3>
                     <div class="card" id="resumen-ejecutivo_control_1">
-                        <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
+                        <p style="text-align: justify;">Para implementar el control de posición en el robot SCARA, es fundamental comprender el 
+                            funcionamiento de sus actuadores, que en este caso corresponden a dos motores de corriente 
+                            continua responsables del desplazamiento angular de los brazos. El procedimiento inicia con 
+                            la captura de una señal que represente la reacción del actuador ante una entrada tipo escalón. 
+                            Existen diversas formas de obtener esta señal, como la medición de la corriente del motor, 
+                            el cálculo de la velocidad angular del eje de salida o el uso de encoders para contar los 
+                            pasos por revolución. En este proyecto, se optó por la última opción debido a su sencilla 
+                            integración en el sistema.</p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('proceso_control_1', 'control_1')">
-                    <h3>Proceso de Diseño</h3>
+                    <h3>Graficás del Comportamiento</h3>
                     <div class="card" id="proceso_control_1">
-                        <p>Descripción del proceso de diseño básico y en detalle.</p>
+                        <p style="text-align: justify;">Tras el proceso de adquisición de datos, se generaron las gráficas de respuesta de los 
+                            motores M1 y M2, en las cuales se observa un comportamiento adecuado. Sin embargo, se 
+                            identificaron leves variaciones en la respuesta entre ambos motores, lo que sugiere 
+                            diferencias en su desempeño bajo las mismas condiciones de operación.</p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_1', 'control_1')">
-                    <h3>Arquitectura Electrónica</h3>
+                    <h3>Aproximacion POR y SOR</h3>
                     <div class="card" id="arquitectura-electronica_control_1">
-                        <p>Descripción del cableado y la arquitectura electrónica.</p>
+                        <p style="text-align: justify;">Para determinar la función de transferencia de las señales, se emplearon dos métodos: el 
+                            método de dos puntos para sistemas de primer orden y el método de tres puntos para sistemas 
+                            de segundo orden. La selección del enfoque más apropiado se basó en la comparación entre 
+                            el comportamiento gráfico de las funciones de transferencia obtenidas y la señal original.
+                            En términos generales, se observó que las aproximaciones POR mostraron un mejor ajuste 
+                            en el caso del 100%, lo que indica una mayor precisión en la representación del sistema 
+                            bajo estas condiciones. Sin embargo, ambas estrategias presentan características particulares 
+                            que pueden ser útiles dependiendo del contexto de aplicación.</p>
                     </div>
                 </div>
                 
@@ -415,19 +431,21 @@
             <!-- Información visual de Diseño (6 columnas derecha) -->
             <div class="info-visual" id="info-visual-control_1">
                 <div id="mensaje-inicial-control_1">
-                    <h3>Control</h3>
-                    <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
+                    <h3>Adquisición y Análisis de los Motores</h3>
+                    <p style="text-align: justify;">es fundamental analizar y modelar el comportamiento de sus motores 
+                        de corriente continua. Este proceso inicia con la adquisición de datos experimentales que 
+                        permiten obtener una representación matemática del sistema, facilitando así el diseño y la 
+                        implementación de estrategias de control. A lo largo de este análisis, se evaluaron diferentes 
+                        métodos para determinar la función de transferencia de los motores, comparando su respuesta 
+                        ante señales de entrada y validando su precisión con respecto a los datos experimentales. 
+                        Además, se examinaron las características dinámicas de cada motor, identificando posibles 
+                        diferencias en su desempeño y ajustando los modelos para garantizar un comportamiento más 
+                        predecible y controlable.</p>
                 </div>
                 <!-- Carrusel para "Resumen Ejecutivo" -->
                 <div class="slides-container" id="slides-resumen-ejecutivo_control_1" style="display: none;">
                     <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 1">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 2">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 3">
+                        <h3>Análisis de la Respuesta</h3>
                     </div>
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_1')">&#10094;</button>
@@ -436,14 +454,29 @@
                 <!-- Carrusel para "Proceso de Diseño" -->
                 <div class="slides-container" id="slides-proceso_control_1" style="display: none;">
                     <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 1">
+                        <h3>Motor 1 - Entrada 50%</h3>
+                        <img src="Imagenes/Motor_1_comportamiento_50.png" alt="Motor 1 - Entrada 50%">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 2">
+                        <h3>Motor 1 - Entrada 80%</h3>
+                        <img src="Imagenes/Motor_1_comportamiento_80.png" alt="Motor 1 - Entrada 80%">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 3">
+                        <h3>Motor 1 - Entrada 100%</h3>
+                        <img src="Imagenes/Motor_1_comportamiento_100.png" alt="Motor 1 - Entrada 100%">
                     </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Entrada 50%</h3>
+                        <img src="Imagenes/Motor_2_comportamiento_50.png" alt="Motor 2 - Entrada 50%">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Entrada 80%</h3>
+                        <img src="Imagenes/Motor_2_comportamiento_80.png" alt="Motor 2 - Entrada 80%">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Entrada 100%</h3>
+                        <img src="Imagenes/Motor_2_comportamiento_100.png" alt="Motor 2 - Entrada 100%">
+                    </div>                    
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_control_1')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_control_1')">&#10095;</button>
@@ -451,14 +484,22 @@
                 <!-- Carrusel para "Arquitectura Electrónica" -->
                 <div class="slides-container" id="slides-arquitectura-electronica_control_1" style="display: none;">
                     <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 1">
+                        <h3>Motor 1 - Comparación POR</h3>
+                        <img src="Imagenes/Motor_1_comparacion_POR.png" alt="Motor 1 - Comparación POR">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 2">
+                        <h3>Motor 1 - Comparación SOR</h3>
+                        <img src="Imagenes/Motor_1_comparacion_SOR.png" alt="Motor 1 - Comparación SOR">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 3">
+                        <h3>Motor 2 - Comparación POR</h3>
+                        <img src="Imagenes/Motor_2_comparacion_POR.png" alt="Motor 2 - Comparación POR">
                     </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Comparación SOR</h3>
+                        <img src="Imagenes/Motor_2_comparacion_SOR.png" alt="Motor 2 - Comparación SOR">
+                    </div>
+                    
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_1')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_1')">&#10095;</button>
@@ -474,73 +515,111 @@
             <!-- Información visual de Diseño (6 columnas derecha) -->
             <div class="info-visual" id="info-visual-control_2">
                 <div id="mensaje-inicial-control_2">
-                    <h3>Control</h3>
-                    <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
+                    <h3>Aproximación y Sintonización</h3>
+                    <p style="text-align: justify;">Para modelar y controlar los motores, se eligió la función 
+                        obtenida con la aproximación POR al 100%, ya que ofrecía una respuesta estable y con 
+                        errores finales despreciables. Durante la sintonización, se realizaron ajustes para 
+                        mejorar la precisión del modelo, primero afinando las funciones sin Padé y luego aplicando 
+                        esta aproximación para representar mejor el retardo del sistema. Este enfoque permitió 
+                        obtener una función que se ajusta bien a la dinámica real de los motores y facilita su 
+                        control.</p>
                 </div>
                 <!-- Carrusel para "Resumen Ejecutivo" -->
                 <div class="slides-container" id="slides-resumen-ejecutivo_control_2" style="display: none;">
                     <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 1">
+                        <h3>Motor 1 - Función POR</h3>
+                        <img src="Imagenes/Motor_1_Funcion_POR.png" alt="Motor 1 - Función POR">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 2">
+                        <h3>Motor 1 - Error en Estado Estacionario</h3>
+                        <img src="Imagenes/Motor_1_ErrorStt.png" alt="Motor 1 - Error en Estado Estacionario">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 3">
+                        <h3>Motor 1 - Error en Valor Final</h3>
+                        <img src="Imagenes/Motor_1_ErrorFinalValue.png" alt="Motor 1 - Error en Valor Final">
                     </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Función POR</h3>
+                        <img src="Imagenes/Motor_2_Funcion_POR.png" alt="Motor 2 - Función POR">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Error en Estado Estacionario</h3>
+                        <img src="Imagenes/Motor_2_ErrorStt.png" alt="Motor 2 - Error en Estado Estacionario">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Error en Valor Final</h3>
+                        <img src="Imagenes/Motor_2_ErrorFinalValue.png" alt="Motor 2 - Error en Valor Final">
+                    </div>
+                    
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_2')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_2')">&#10095;</button>
                 </div>
                 <!-- Carrusel para "Proceso de Diseño" -->
                 <div class="slides-container" id="slides-proceso_control_2" style="display: none;">
+
                     <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 1">
+                        <h3>Motor 1 - Función Ajustada (Sin Padé)</h3>
+                        <img src="Imagenes/Motor_1_Tuning_POR.png" alt="Motor 1 Tuning">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 2">
+                        <h3>Motor 1 - Comparación de Sintonización</h3>
+                        <img src="Imagenes/Motor_1_Sintonizacion_POR.png" alt="Motor 1 Sintonización">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 3">
+                        <h3>Motor 2 - Función Ajustada (Sin Padé)</h3>
+                        <img src="Imagenes/Motor_2_Tuning_POR.png" alt="Motor 2 Tuning">
                     </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Comparación de Sintonización</h3>
+                        <img src="Imagenes/Motor_2_Sintonizacion_POR.png" alt="Motor 2 Sintonización">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 1 - Función Ajustada con Aproximación de Pade</h3>
+                        <img src="Imagenes/Motor_1_Sintonizacion_POR_Pade.png" alt="Motor 1 Sintonización Padé">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Función Ajustada con Aproximación de Pade</h3>
+                        <img src="Imagenes/Motor_2_Sintonizacion_POR_Pade.png" alt="Motor 2 Sintonización Padé">
+                    </div>
+                    
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_control_2')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_control_2')">&#10095;</button>
-                </div>
-                <!-- Carrusel para "Arquitectura Electrónica" -->
-                <div class="slides-container" id="slides-arquitectura-electronica_control_2" style="display: none;">
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 1">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 2">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 3">
-                    </div>
-                    <!-- Botones de navegación -->
-                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_2')">&#10094;</button>
-                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_2')">&#10095;</button>
                 </div>
             </div>
             <!-- Subsecciones de Diseño (6 columnas izquierda) -->
             <div class="subseccion-columna">
                 <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_2', 'control_2')">
-                    <h3>Resumen Ejecutivo</h3>
+                    <h3>Funciones Elegidas</h3>
                     <div class="card" id="resumen-ejecutivo_control_2">
-                        <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
+                        <p style="text-align: justify;">Para la elección de la función, se ha optado por utilizar la respuesta del modelo POR con 
+                            una entrada del 100%. Esta decisión se basa en que los errores finales de valor para ambos 
+                            motores son cero, lo que indica que la respuesta converge exactamente al valor deseado sin 
+                            desviaciones permanentes. En cuanto al error en estado estacionario, el motor 2 presenta 
+                            un valor de 0.1105, mientras que el motor 1 tiene un error mayor de 0.5145. Aunque hay una 
+                            diferencia entre los motores, estos valores siguen siendo aceptables en comparación 
+                            con otras configuraciones.
+
+                            Los modelos de función de transferencia obtenidos muestran que ambos motores presentan 
+                            retardos y tiempos de respuesta similares, lo que indica un comportamiento consistente. 
+                            La elección del modelo POR con entrada del 100% se debe a que, en comparación con otras 
+                            opciones, es el que mejor se ajusta a la dinámica de los motores. Presenta una menor 
+                            desviación en el estado estacionario y garantiza una mejor estabilidad en la respuesta final.</p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('proceso_control_2', 'control_2')">
-                    <h3>Proceso de Diseño</h3>
+                    <h3>Sintonización</h3>
                     <div class="card" id="proceso_control_2">
-                        <p>Descripción del proceso de diseño básico y en detalle.</p>
-                    </div>
-                </div>
-                <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_2', 'control_2')">
-                    <h3>Arquitectura Electrónica</h3>
-                    <div class="card" id="arquitectura-electronica_control_2">
-                        <p>Descripción del cableado y la arquitectura electrónica.</p>
+                        <p style="text-align: justify;">Durante la sintonización, se realizaron ajustes en los valores 
+                            de la función de transferencia para mejorar la precisión del modelo con respecto al 
+                            comportamiento real de los motores. Se trabajó con dos versiones de la función de 
+                            transferencia: una con la aproximación de Padé y otra sin ella. Inicialmente, se utilizaron 
+                            las funciones sin Padé como base para la sintonización, ajustando los coeficientes del 
+                            denominador, en particular los valores asociados a la constante de tiempo y la ganancia 
+                            del sistema. Posteriormente, a partir de estas funciones ajustadas, se generaron las 
+                            versiones con la aproximación de Padé para representar de manera más realista el retardo 
+                            presente en el sistema.</p>
                     </div>
                 </div>
                 
@@ -554,21 +633,53 @@
             <!-- Subsecciones de Diseño (6 columnas izquierda) -->
             <div class="subseccion-columna">
                 <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_3', 'control_3')">
-                    <h3>Resumen Ejecutivo</h3>
+                    <h3>Tiempo de muestreo</h3>
                     <div class="card" id="resumen-ejecutivo_control_3">
-                        <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
+                        <p style="text-align: justify;">Para determinar el tiempo de muestreo adecuado para la 
+                            discretización de las funciones de transferencia de los motores, se emplearon tres 
+                            criterios principales: el criterio del ancho de banda, el criterio del tau equivalente 
+                            y el criterio del tiempo de establecimiento. El criterio del ancho de banda establece 
+                            límites para el periodo de muestreo en función de la frecuencia de respuesta del sistema, 
+                            asegurando una captura precisa del comportamiento dinámico. El criterio del tau 
+                            equivalente se basa en el polo dominante del sistema, determinando un rango de valores 
+                            adecuados para el muestreo en función de la constante de tiempo equivalente. Finalmente, 
+                            el criterio del tiempo de establecimiento usa los datos de respuesta al escalón para 
+                            definir límites en el tiempo de muestreo, asegurando que la dinámica del sistema sea 
+                            representada con precisión en la versión discreta.
+
+                            Tras aplicar estos criterios a las funciones de transferencia de los motores, se 
+                            obtuvieron los rangos adecuados de muestreo y se seleccionó un valor de Ts = 0.0315 s 
+                            como un compromiso entre los métodos utilizados. Con este tiempo de muestreo, se garantiza 
+                            una representación precisa del sistema en el dominio discreto, manteniendo un balance 
+                            entre fidelidad y eficiencia computacional.</p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('proceso_control_3', 'control_3')">
-                    <h3>Proceso de Diseño</h3>
+                    <h3>Metodos de Discretización</h3>
                     <div class="card" id="proceso_control_3">
-                        <p>Descripción del proceso de diseño básico y en detalle.</p>
+                        <p style="text-align: justify;">Para la discretización de las funciones de transferencia 
+                            de ambos motores, se utilizaron tres métodos distintos: Tustin, Zero-Order Hold (ZOH)
+                            y Euler Forward. El método de Tustin, también conocido como aproximación bilineal, 
+                            permite mapear mejor la respuesta en frecuencia, asegurando estabilidad y precisión 
+                            en sistemas de control digital. Por otro lado, el método Zero-Order Hold (ZOH) mantiene
+                            constante la señal de entrada durante cada período de muestreo, lo que es útil para 
+                            modelar sistemas en los que la señal de control se mantiene sin cambios entre cada muestra.
+                            Finalmente, el método Euler Forward es una aproximación más simple que discretiza 
+                            el sistema usando diferencias hacia adelante, lo que puede ser útil en sistemas con 
+                            alta frecuencia de muestreo. Estos métodos fueron aplicados a cada motor utilizando 
+                            el tiempo de muestreo obtenido previamente, garantizando que la discretización preserve 
+                            las características dinámicas de los modelos continuos.</p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_3', 'control_3')">
-                    <h3>Arquitectura Electrónica</h3>
+                    <h3>Metodo más Adecuado</h3>
                     <div class="card" id="arquitectura-electronica_control_3">
-                        <p>Descripción del cableado y la arquitectura electrónica.</p>
+                        <p style="text-align: justify;">Para la discretización de los modelos de los motores, se 
+                            evaluaron los métodos de Tustin, Zero Order Hold (ZOH) y Euler Forward. Se decidió 
+                            utilizar el método de Tustin, ya que ofrece una mejor aproximación al sistema continuo 
+                            sin introducir polos adicionales, lo que ayuda a mantener la estabilidad y el comportamiento 
+                            original del sistema. Esta transformación se aplicó a ambos motores para garantizar 
+                            coherencia en el análisis y control digital.</p>
                     </div>
                 </div>
                 
@@ -576,20 +687,35 @@
             <!-- Información visual de Diseño (6 columnas derecha) -->
             <div class="info-visual" id="info-visual-control_3">
                 <div id="mensaje-inicial-control_3">
-                    <h3>Control</h3>
-                    <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
+                    <h3>Discretización de los Modelos</h3>
+                    <p style="text-align: justify;">Para la discretización de las funciones de transferencia de 
+                        los motores, se determinó primero un tiempo de muestreo adecuado mediante distintos 
+                        criterios, seleccionando un valor que garantizara un buen equilibrio entre precisión y 
+                        eficiencia computacional. Luego, se aplicaron los métodos de discretización Tustin, ZOH y 
+                        Euler Forward para evaluar su desempeño en la representación discreta del sistema. Finalmente, 
+                        se optó por el método de Tustin, ya que proporciona una mejor aproximación sin alterar 
+                        la estabilidad del sistema, asegurando que el comportamiento dinámico original se conserve 
+                        en el dominio digital.</p>
                 </div>
                 <!-- Carrusel para "Resumen Ejecutivo" -->
                 <div class="slides-container" id="slides-resumen-ejecutivo_control_3" style="display: none;">
                     <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 1">
+                        <h3>Código para el cálculo del tiempo de muestreo - Motor 1</h3>
+                        <img src="Imagenes/Motor_1_SampleTime_Code.png" alt="Código del tiempo de muestreo Motor 1">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 2">
+                        <h3>Código para el cálculo del tiempo de muestreo - Motor 2</h3>
+                        <img src="Imagenes/Motor_2_SampleTime_Code.png" alt="Código del tiempo de muestreo Motor 2">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 3">
+                        <h3>Valores obtenidos para el tiempo de muestreo - Motor 1</h3>
+                        <img src="Imagenes/Motor_1_ValoresTs.png" alt="Valores del tiempo de muestreo Motor 1">
                     </div>
+                    <div class="slide">
+                        <h3>Valores obtenidos para el tiempo de muestreo - Motor 2</h3>
+                        <img src="Imagenes/Motor_2_ValoresTs.png" alt="Valores del tiempo de muestreo Motor 2">
+                    </div>
+                    
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_3')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_3')">&#10095;</button>
@@ -597,29 +723,40 @@
                 <!-- Carrusel para "Proceso de Diseño" -->
                 <div class="slides-container" id="slides-proceso_control_3" style="display: none;">
                     <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 1">
+                        <h3>Comparación Discretización del Motor 1</h3>
+                        <img src="Imagenes/Motor_1_discretizacion.png" alt="Discretización Motor 1">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 2">
+                        <h3>Comparación Discretización del Motor 2</h3>
+                        <img src="Imagenes/Motor_2_discretizacion.png" alt="Discretización Motor 2">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 3">
+                        <h3>Funciones de Transferencia Discretizadas - Motor 1</h3>
+                        <img src="Imagenes/Motor_1_Discretizacion_TF.png" alt="FT Discretizada Motor 1" style="width: 50%; height: auto;">
                     </div>
+                    <div class="slide">
+                        <h3>Funciones de Transferencia Discretizadas - Motor 2</h3>
+                        <img src="Imagenes/Motor_2_Discretizacion_TF.png" alt="FT Discretizada Motor 2" style="width: 50%; height: auto;">
+                    </div>
+                    
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_control_3')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_control_3')">&#10095;</button>
                 </div>
                 <!-- Carrusel para "Arquitectura Electrónica" -->
                 <div class="slides-container" id="slides-arquitectura-electronica_control_3" style="display: none;">
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 1">
+                    <div class="slide"> 
+                        <img src="Imagenes/Motor_1_Tustin_Graph.png" alt="Motor 1 - Respuesta con Tustin">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 2">
+                        <img src="Imagenes/Motor_1_Tustin_TF.png" alt="Motor 1 - Función de Transferencia con Tustin">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 3">
+                        <img src="Imagenes/Motor_2_Tustin_Graph.png" alt="Motor 2 - Respuesta con Tustin">
                     </div>
+                    <div class="slide">
+                        <img src="Imagenes/Motor_2_Tustin_TF.png" alt="Motor 2 - Función de Transferencia con Tustin">
+                    </div>                    
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_3')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_3')">&#10095;</button>
@@ -635,49 +772,86 @@
             <!-- Información visual de Diseño (6 columnas derecha) -->
             <div class="info-visual" id="info-visual-control_4">
                 <div id="mensaje-inicial-control_4">
-                    <h3>Control</h3>
-                    <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
+                    <h3>Analisis Posteriores</h3>
+                    <p style="text-align: justify;">Para garantizar la estabilidad y el desempeño del sistema 
+                        tras la discretización con el método de Tustin, se aplicaron diversos criterios de análisis. 
+                        Se utilizó el criterio de estabilidad de Jury y Routh para verificar que los polos 
+                        permanecieran dentro del círculo unitario, asegurando que la discretización no afectara 
+                        la estabilidad del sistema. Luego, mediante el análisis del lugar de las raíces, se 
+                        evaluó cómo la ganancia influía en la ubicación de los polos y cómo se mantenía la 
+                        estructura del sistema en su versión discreta. Además, se diseñó un lazo de realimentación 
+                        con ganancia proporcional para examinar su impacto en la estabilidad y respuesta del 
+                        sistema. Finalmente, se llevó a cabo un análisis en frecuencia a través de diagramas 
+                        de Bode para validar los márgenes de ganancia y fase, garantizando un adecuado desempeño 
+                        del sistema discretizado.</p>
                 </div>
                 <!-- Carrusel para "Resumen Ejecutivo" -->
                 <div class="slides-container" id="slides-resumen-ejecutivo_control_4" style="display: none;">
                     <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 1">
+                        <h3>Motor 1 - Root Locus TF con Pade</h3>
+                        <img src="Imagenes/Motor_1_RootLocus_TFPade.png" alt="Motor 1 - Root Locus TF con Pade">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 2">
+                        <h3>Motor 1 - Polos TF con Pade</h3>
+                        <img src="Imagenes/Motor_1_Polos_Pade.png" alt="Motor 1 - Polos TF con Pade">
                     </div>
                     <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 3">
+                        <h3>Motor 1 - Root Locus TF con Tustin</h3>
+                        <img src="Imagenes/Motor_1_RootLocus_TFTustin.png" alt="Motor 1 - Root Locus TF con Tustin">
                     </div>
+                    <div class="slide">
+                        <h3>Motor 1 - Polos TF con Tustin</h3>
+                        <img src="Imagenes/Motor_1_Polos_Tustin.png" alt="Motor 1 - Polos TF con Tustin">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 1 - Root Locus con Kp</h3>
+                        <img src="Imagenes/Motor_1_RootLocus_Kp.png" alt="Motor 1 - Root Locus con Kp">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 1 - Polos TF con Kp</h3>
+                        <img src="Imagenes/Motor_1_Polos_Kp.png" alt="Motor 1 - Polos TF con Kp">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 1 - Diagrama de Bode</h3>
+                        <img src="Imagenes/Motor_1_Bode.png" alt="Motor 1 - Diagrama de Bode">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Root Locus TF con Padé</h3>
+                        <img src="Imagenes/Motor_2_RootLocus_TFPade.png" alt="Motor 1 - Root Locus TF con Padé">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Polos TF con Pade</h3>
+                        <img src="Imagenes/Motor_2_Polos_Pade.png" alt="Motor 1 - Polos TF con Pade">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Root Locus TF con Tustin</h3>
+                        <img src="Imagenes/Motor_2_RootLocus_TFTustin.png" alt="Motor 1 - Root Locus TF con Tustin">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Polos TF con Tustin</h3>
+                        <img src="Imagenes/Motor_2_Polos_Tustin.png" alt="Motor 1 - Polos TF con Tustin">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Root Locus con Kp</h3>
+                        <img src="Imagenes/Motor_2_RootLocus_Kp.png" alt="Motor 1 - Root Locus con Kp">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Polos TF con Kp</h3>
+                        <img src="Imagenes/Motor_2_Polos_Kp.png" alt="Motor 1 - Polos TF con Kp">
+                    </div>
+                    <div class="slide">
+                        <h3>Motor 2 - Diagrama de Bode</h3>
+                        <img src="Imagenes/Motor_2_Bode.png" alt="Motor 2 - Diagrama de Bode">
+                    </div>
+                    
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_4')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_4')">&#10095;</button>
                 </div>
-                <!-- Carrusel para "Proceso de Diseño" -->
-                <div class="slides-container" id="slides-proceso_control_4" style="display: none;">
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 1">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 2">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 3">
-                    </div>
-                    <!-- Botones de navegación -->
-                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_control_4')">&#10094;</button>
-                    <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_control_4')">&#10095;</button>
-                </div>
                 <!-- Carrusel para "Arquitectura Electrónica" -->
                 <div class="slides-container" id="slides-arquitectura-electronica_control_4" style="display: none;">
                     <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 1">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 2">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 3">
+                        <h3>Conclusiones</h3>
                     </div>
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_4')">&#10094;</button>
@@ -687,109 +861,58 @@
             <!-- Subsecciones de Diseño (6 columnas izquierda) -->
             <div class="subseccion-columna">
                 <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_4', 'control_4')">
-                    <h3>Resumen Ejecutivo</h3>
+                    <h3>Metodo de Jury & Routh, Root Locus</h3>
                     <div class="card" id="resumen-ejecutivo_control_4">
-                        <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
-                    </div>
-                </div>
-                <div class="subseccion" onclick="mostrarSubseccion('proceso_control_4', 'control_4')">
-                    <h3>Proceso de Diseño</h3>
-                    <div class="card" id="proceso_control_4">
-                        <p>Descripción del proceso de diseño básico y en detalle.</p>
+                        <p style="text-align: justify;">Para evaluar la estabilidad y el desempeño de las funciones 
+                            de transferencia obtenidas tras la discretización mediante el método de Tustin, se 
+                            aplicaron diferentes criterios de estabilidad y análisis en frecuencia. En primer lugar, 
+                            se utilizó el criterio de estabilidad de Jury y Routh para comprobar que los sistemas 
+                            discretizados mantuvieran sus características de estabilidad sin introducir polos fuera 
+                            del círculo unitario en el dominio Z. Esto permitió validar que la discretización no 
+                            comprometiera el comportamiento estable del sistema.  
+                            Posteriormente, se realizó un análisis detallado del lugar de las raíces (Root Locus) 
+                            para ambas funciones de transferencia, tanto en su versión continua como en su versión 
+                            discretizada. Con esto, se pudo observar cómo la ganancia afecta la ubicación de los 
+                            polos y cómo se mantiene la estructura general del sistema tras la discretización. Además, 
+                            para evaluar el desempeño del controlador en el dominio discreto, se diseñó un lazo de 
+                            realimentación unitario con una ganancia proporcional kp, permitiendo analizar el efecto 
+                            de este control en la estabilidad y respuesta del sistema.                              
+                            Finalmente, se llevó a cabo un análisis en frecuencia a través de los diagramas de Bode 
+                            para verificar los márgenes de ganancia y de fase, asegurando que el sistema discretizado 
+                            conserve un adecuado margen de estabilidad y respuesta ante perturbaciones. El método de 
+                            discretización seleccionado no solo permitió mantener la estabilidad del sistema, sino 
+                            que también preservó el comportamiento dinámico del modelo original, asegurando que las 
+                            características deseadas para el control del motor se mantuvieran tras el proceso de 
+                            digitalización.</p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_4', 'control_4')">
-                    <h3>Arquitectura Electrónica</h3>
+                    <h3>Conclusiones</h3>
                     <div class="card" id="arquitectura-electronica_control_4">
-                        <p>Descripción del cableado y la arquitectura electrónica.</p>
+                        <p style="text-align: justify;">A lo largo del proceso de modelado y control de los motores, 
+                            se realizaron diversas etapas para obtener una representación precisa del sistema y 
+                            seleccionar las mejores estrategias de control. Inicialmente, se determinó la función 
+                            de transferencia de cada motor y se analizaron los errores en el estado estacionario y 
+                            el valor final para ajustar los modelos. Posteriormente, se llevó a cabo la sintonización 
+                            de los sistemas para que sus respuestas se ajustaran lo mejor posible al comportamiento 
+                            real de los motores. Durante este ajuste, se evaluaron diferentes valores y técnicas, 
+                            descartando métodos que no representaban correctamente la dinámica observada. La elección 
+                            final de los parámetros estuvo basada en la estabilidad y en la respuesta temporal del 
+                            sistema.  
+                            En la fase de discretización, se evaluaron distintos métodos, como Tustin, Zero Order 
+                            Hold y Euler Forward, determinando que Tustin era la mejor opción debido a que no añadía 
+                            polos adicionales al sistema y mantenía la estabilidad de la representación digital. 
+                            Finalmente, mediante los criterios de estabilidad de Jury y Routh, el análisis del lugar 
+                            geométrico de las raíces y el diagrama de Bode, se validó que el sistema discretizado 
+                            conservaba las características deseadas y era capaz de mantener el control con un ajuste 
+                            adecuado de la ganancia proporcional. Así, se logró un modelo que representa con precisión 
+                            la dinámica de los motores y puede ser utilizado para implementar un control eficiente 
+                            en un entorno real.</p>
                     </div>
                 </div>
-                
             </div>
         </div>
-    </section>
-
-    <!-- Sección: Control_2 -->
-    <section id="control_5">
-        <div class="control_5-container">
-            <!-- Subsecciones de Diseño (6 columnas izquierda) -->
-            <div class="subseccion-columna">
-                <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_5', 'control_5')">
-                    <h3>Resumen Ejecutivo</h3>
-                    <div class="card" id="resumen-ejecutivo_control_5">
-                        <p>Aquí se presentará la información más relevante del proceso de diseño.</p>
-                    </div>
-                </div>
-                <div class="subseccion" onclick="mostrarSubseccion('proceso_control_5', 'control_5')">
-                    <h3>Proceso de Diseño</h3>
-                    <div class="card" id="proceso_control_5">
-                        <p>Descripción del proceso de diseño básico y en detalle.</p>
-                    </div>
-                </div>
-                <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_5', 'control_5')">
-                    <h3>Arquitectura Electrónica</h3>
-                    <div class="card" id="arquitectura-electronica_control_5">
-                        <p>Descripción del cableado y la arquitectura electrónica.</p>
-                    </div>
-                </div>
-                
-            </div>
-            <!-- Información visual de Diseño (6 columnas derecha) -->
-            <div class="info-visual" id="info-visual-control_5">
-                <div id="mensaje-inicial-control_5">
-                    <h3>Control</h3>
-                    <p>En esta sección encontrarás información sobre el proceso de diseño del proyecto SCARA, incluyendo el resumen ejecutivo, el proceso de diseño y la arquitectura electrónica.</p>
-                </div>
-                <!-- Carrusel para "Resumen Ejecutivo" -->
-                <div class="slides-container" id="slides-resumen-ejecutivo_control_5" style="display: none;">
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 1">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 2">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 3">
-                    </div>
-                    <!-- Botones de navegación -->
-                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_5')">&#10094;</button>
-                    <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_5')">&#10095;</button>
-                </div>
-                <!-- Carrusel para "Proceso de Diseño" -->
-                <div class="slides-container" id="slides-proceso_control_5" style="display: none;">
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 1">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 2">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_3.jpg" alt="Imagen 3">
-                    </div>
-                    <!-- Botones de navegación -->
-                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'proceso_control_5')">&#10094;</button>
-                    <button class="slide-button next" onclick="cambiarSlide(1, 'proceso_control_5')">&#10095;</button>
-                </div>
-                <!-- Carrusel para "Arquitectura Electrónica" -->
-                <div class="slides-container" id="slides-arquitectura-electronica_control_5" style="display: none;">
-                    <div class="slide">
-                        <img src="/https://estbanga.github.io/proyecto-integrador-scara-hsbd-jdal-ega/Imagenes/Imagen_3.jpg" alt="Imagen 1">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_1.jpg" alt="Imagen 2">
-                    </div>
-                    <div class="slide">
-                        <img src="Imagenes/Imagen_2.jpg" alt="Imagen 3">
-                    </div>
-                    <!-- Botones de navegación -->
-                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_5')">&#10094;</button>
-                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_5')">&#10095;</button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
+    </div>
     <footer>
         <p>&copy; 2025 Proyecto Integrador SCARA</p>
     </footer>
@@ -905,7 +1028,6 @@
         reiniciarSeccion('control_2');
         reiniciarSeccion('control_3');
         reiniciarSeccion('control_4');
-        reiniciarSeccion('control_5');
     </script>
 </body>
 </html>
