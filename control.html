@@ -285,6 +285,13 @@
             background: #ff9800; /* Color de la barra de progreso */
             border-radius: 10px;
             transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para mejor legibilidad */
         }
 
         /* Ajustes para modo claro */
@@ -363,6 +370,13 @@
         .slide-button.next {
             right: 10px;
         }
+        .etiquetas-progreso {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 14px;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -378,7 +392,11 @@
         <div class="avances-contenido">
             <h2>Avances</h2>
             <div class="barra-progreso">
-                <div class="progreso" style="width: 50%;"></div> <!-- Cambia el porcentaje aquí -->
+                <div class="progreso" style="width: 50%;">50%</div> <!-- Texto dentro de la barra -->
+            </div>
+            <div class="etiquetas-progreso">
+                <span>0%</span> <!-- Etiqueta de inicio -->
+                <span>100%</span> <!-- Etiqueta de fin -->
             </div>
         </div>
     </section>
@@ -405,7 +423,7 @@
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('proceso_control_1', 'control_1')">
-                    <h3>Graficás del Comportamiento</h3>
+                    <h3>Gráficas del Comportamiento</h3>
                     <div class="card" id="proceso_control_1">
                         <p style="text-align: justify;">Tras el proceso de adquisición de datos, se generaron las gráficas de respuesta de los 
                             motores M1 y M2, en las cuales se observa un comportamiento adecuado. Sin embargo, se 
@@ -414,7 +432,7 @@
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_1', 'control_1')">
-                    <h3>Aproximacion POR y SOR</h3>
+                    <h3>Aproximación POR y SOR</h3>
                     <div class="card" id="arquitectura-electronica_control_1">
                         <p style="text-align: justify;">Para determinar la función de transferencia de las señales, se emplearon dos métodos: el 
                             método de dos puntos para sistemas de primer orden y el método de tres puntos para sistemas 
@@ -633,7 +651,7 @@
             <!-- Subsecciones de Diseño (6 columnas izquierda) -->
             <div class="subseccion-columna">
                 <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_3', 'control_3')">
-                    <h3>Tiempo de muestreo</h3>
+                    <h3>Tiempo de Muestreo</h3>
                     <div class="card" id="resumen-ejecutivo_control_3">
                         <p style="text-align: justify;">Para determinar el tiempo de muestreo adecuado para la 
                             discretización de las funciones de transferencia de los motores, se emplearon tres 
@@ -645,8 +663,7 @@
                             adecuados para el muestreo en función de la constante de tiempo equivalente. Finalmente, 
                             el criterio del tiempo de establecimiento usa los datos de respuesta al escalón para 
                             definir límites en el tiempo de muestreo, asegurando que la dinámica del sistema sea 
-                            representada con precisión en la versión discreta.
-
+                            representada con precisión en la versión discreta.<br>
                             Tras aplicar estos criterios a las funciones de transferencia de los motores, se 
                             obtuvieron los rangos adecuados de muestreo y se seleccionó un valor de Ts = 0.0315 s 
                             como un compromiso entre los métodos utilizados. Con este tiempo de muestreo, se garantiza 
@@ -655,7 +672,7 @@
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('proceso_control_3', 'control_3')">
-                    <h3>Metodos de Discretización</h3>
+                    <h3>Métodos de Discretización</h3>
                     <div class="card" id="proceso_control_3">
                         <p style="text-align: justify;">Para la discretización de las funciones de transferencia 
                             de ambos motores, se utilizaron tres métodos distintos: Tustin, Zero-Order Hold (ZOH)
@@ -672,7 +689,7 @@
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_3', 'control_3')">
-                    <h3>Metodo más Adecuado</h3>
+                    <h3>Método más Adecuado</h3>
                     <div class="card" id="arquitectura-electronica_control_3">
                         <p style="text-align: justify;">Para la discretización de los modelos de los motores, se 
                             evaluaron los métodos de Tustin, Zero Order Hold (ZOH) y Euler Forward. Se decidió 
@@ -700,19 +717,19 @@
                 <!-- Carrusel para "Resumen Ejecutivo" -->
                 <div class="slides-container" id="slides-resumen-ejecutivo_control_3" style="display: none;">
                     <div class="slide">
-                        <h3>Código para el cálculo del tiempo de muestreo - Motor 1</h3>
+                        <h3>Código para el Cálculo del Tiempo de Muestreo - Motor 1</h3>
                         <img src="Imagenes/Motor_1_SampleTime_Code.png" alt="Código del tiempo de muestreo Motor 1">
                     </div>
                     <div class="slide">
-                        <h3>Código para el cálculo del tiempo de muestreo - Motor 2</h3>
+                        <h3>Código para el Cálculo del Tiempo de Muestreo - Motor 2</h3>
                         <img src="Imagenes/Motor_2_SampleTime_Code.png" alt="Código del tiempo de muestreo Motor 2">
                     </div>
                     <div class="slide">
-                        <h3>Valores obtenidos para el tiempo de muestreo - Motor 1</h3>
+                        <h3>Valores Obtenidos para el Tiempo de Muestreo - Motor 1</h3>
                         <img src="Imagenes/Motor_1_ValoresTs.png" alt="Valores del tiempo de muestreo Motor 1">
                     </div>
                     <div class="slide">
-                        <h3>Valores obtenidos para el tiempo de muestreo - Motor 2</h3>
+                        <h3>Valores Obtenidos para el Tiempo de Muestreo - Motor 2</h3>
                         <img src="Imagenes/Motor_2_ValoresTs.png" alt="Valores del tiempo de muestreo Motor 2">
                     </div>
                     
@@ -772,7 +789,7 @@
             <!-- Información visual de Diseño (6 columnas derecha) -->
             <div class="info-visual" id="info-visual-control_4">
                 <div id="mensaje-inicial-control_4">
-                    <h3>Analisis Posteriores</h3>
+                    <h3>Análisis Posteriores</h3>
                     <p style="text-align: justify;">Para garantizar la estabilidad y el desempeño del sistema 
                         tras la discretización con el método de Tustin, se aplicaron diversos criterios de análisis. 
                         Se utilizó el criterio de estabilidad de Jury y Routh para verificar que los polos 
@@ -861,7 +878,7 @@
             <!-- Subsecciones de Diseño (6 columnas izquierda) -->
             <div class="subseccion-columna">
                 <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_4', 'control_4')">
-                    <h3>Metodo de Jury & Routh, Root Locus</h3>
+                    <h3>Método de Jury & Routh, Root Locus</h3>
                     <div class="card" id="resumen-ejecutivo_control_4">
                         <p style="text-align: justify;">Para evaluar la estabilidad y el desempeño de las funciones 
                             de transferencia obtenidas tras la discretización mediante el método de Tustin, se 
@@ -869,14 +886,14 @@
                             se utilizó el criterio de estabilidad de Jury y Routh para comprobar que los sistemas 
                             discretizados mantuvieran sus características de estabilidad sin introducir polos fuera 
                             del círculo unitario en el dominio Z. Esto permitió validar que la discretización no 
-                            comprometiera el comportamiento estable del sistema.  
+                            comprometiera el comportamiento estable del sistema.<br> 
                             Posteriormente, se realizó un análisis detallado del lugar de las raíces (Root Locus) 
                             para ambas funciones de transferencia, tanto en su versión continua como en su versión 
                             discretizada. Con esto, se pudo observar cómo la ganancia afecta la ubicación de los 
                             polos y cómo se mantiene la estructura general del sistema tras la discretización. Además, 
                             para evaluar el desempeño del controlador en el dominio discreto, se diseñó un lazo de 
                             realimentación unitario con una ganancia proporcional kp, permitiendo analizar el efecto 
-                            de este control en la estabilidad y respuesta del sistema.                              
+                            de este control en la estabilidad y respuesta del sistema.<br>                             
                             Finalmente, se llevó a cabo un análisis en frecuencia a través de los diagramas de Bode 
                             para verificar los márgenes de ganancia y de fase, asegurando que el sistema discretizado 
                             conserve un adecuado margen de estabilidad y respuesta ante perturbaciones. El método de 
@@ -898,7 +915,7 @@
                             real de los motores. Durante este ajuste, se evaluaron diferentes valores y técnicas, 
                             descartando métodos que no representaban correctamente la dinámica observada. La elección 
                             final de los parámetros estuvo basada en la estabilidad y en la respuesta temporal del 
-                            sistema.  
+                            sistema.<br>
                             En la fase de discretización, se evaluaron distintos métodos, como Tustin, Zero Order 
                             Hold y Euler Forward, determinando que Tustin era la mejor opción debido a que no añadía 
                             polos adicionales al sistema y mantenía la estabilidad de la representación digital. 

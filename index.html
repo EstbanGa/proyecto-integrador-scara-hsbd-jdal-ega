@@ -404,7 +404,7 @@
     <header>
         <h1>Proyecto Integrador SCARA</h1>
         <nav>
-            <a href="#grupo">Conoce nuestro grupo</a>
+            <a href="#grupo">Conoce Nuestro Grupo</a>
             <a href="#diseno">Diseño</a>
             <a href="#construccion">Construcción</a>
             <a href="#conclusion">Conclusiones</a>
@@ -463,25 +463,56 @@
                 <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_diseno', 'diseno')">
                     <h3>Resumen Ejecutivo</h3>
                     <div class="card" id="resumen-ejecutivo_diseno">
-                        <p style="text-align: justify;">Nuestro proyecto integrador consiste en el desarrollo de un robot SCARA . El robot está equipado con dos motores Pololu de 200 RPM, cuatro finales de carrera para limitar su movimiento. Para su control, utilizamos una Raspberry Pi Pico programada en MicroPython, lo que nos permitió gestionar de manera eficiente los movimientos y funciones del robot. Además, integramos un driver L298N para controlar los motores, asegurando un manejo adecuado de la velocidad y dirección.
-
-                            En el diseño mecánico, implementamos piezas 3D fabricadas con impresión 3D, lo que nos permitió adaptar la estructura del robot a nuestras necesidades. Para la programación y depuración del código, utilizamos Thonny 2, una herramienta que facilitó el desarrollo del software en MicroPython. El robot SCARA resultante demuestra un funcionamiento coherente y es capaz de realizar tareas básicas de automatización, cumpliendo con los objetivos planteados en el curso.</p>
+                        <p style="text-align: justify;">Nuestro proyecto integrador consiste en el desarrollo 
+                            de un robot SCARA . El robot está equipado con dos motores Pololu de 200 RPM, 
+                            cuatro finales de carrera para limitar su movimiento. Para su control, utilizamos 
+                            una Raspberry Pi Pico programada en MicroPython, lo que nos permitió gestionar de 
+                            manera eficiente los movimientos y funciones del robot. Además, integramos un driver 
+                            L298N para controlar los motores, asegurando un manejo adecuado de la velocidad y 
+                            dirección.
+                            En el diseño mecánico, implementamos piezas 3D fabricadas con impresión 3D, lo 
+                            que nos permitió adaptar la estructura del robot a nuestras necesidades. Para la 
+                            programación y depuración del código, utilizamos Thonny 2, una herramienta que 
+                            facilitó el desarrollo del software en MicroPython. El robot SCARA resultante 
+                            demuestra un funcionamiento coherente y es capaz de realizar tareas básicas de 
+                            automatización, cumpliendo con los objetivos planteados en el curso.</p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('proceso_diseno', 'diseno')">
                     <h3>Proceso de Diseño</h3>
                     <div class="card" id="proceso_diseno">
-                        <p style="text-align: justify;">Se diseñaron dos prototipos en el desarrollo del robot SCARA. El primero se caracterizaba por ser más bajo y compacto, priorizando una estructura reducida para optimizar el espacio y facilitar las pruebas de funcionamiento. Sin embargo, tras evaluar su desempeño, se identificaron oportunidades de mejora en términos de alcance y estabilidad, lo que llevó a ajustes en la altura y dimensiones generales en una versión posterior.
-
-                            El diseño preliminar del robot SCARA surgió tras analizar modelos comerciales y referencias propias, considerando factores como alcance, precisión y materiales. Se estudiaron diferentes configuraciones mecánicas para definir criterios como la longitud de los brazos y la disposición de los ejes. A través de bocetos, simulaciones y cálculos, se optimizó la estructura para garantizar estabilidad y eficiencia. Este proceso permitió iterar en el diseño hasta lograr una configuración equilibrada entre compacidad y funcionalidad. Finalmente, el ultimo prototipo tuvo una altura total de 300 mm, con una base y un brazo principal de 150 mm, dimensiones que sirvieron de referencia para futuras mejoras</p>
+                        <p style="text-align: justify;">Se diseñaron dos prototipos en el desarrollo del robot 
+                            SCARA. El primero se caracterizaba por ser más bajo y compacto, priorizando una 
+                            estructura reducida para optimizar el espacio y facilitar las pruebas de funcionamiento. 
+                            Sin embargo, tras evaluar su desempeño, se identificaron oportunidades de mejora en 
+                            términos de alcance y estabilidad, lo que llevó a ajustes en la altura y dimensiones 
+                            generales en una versión posterior.
+                            El diseño preliminar del robot SCARA surgió tras analizar modelos comerciales y 
+                            referencias propias, considerando factores como alcance, precisión y materiales. 
+                            Se estudiaron diferentes configuraciones mecánicas para definir criterios como la 
+                            longitud de los brazos y la disposición de los ejes. A través de bocetos, simulaciones 
+                            y cálculos, se optimizó la estructura para garantizar estabilidad y eficiencia. 
+                            Este proceso permitió iterar en el diseño hasta lograr una configuración equilibrada 
+                            entre compacidad y funcionalidad. Finalmente, el ultimo prototipo tuvo una altura 
+                            total de 300 mm, con una base y un brazo principal de 150 mm, dimensiones que sirvieron 
+                            de referencia para futuras mejoras</p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_diseno', 'diseno')">
                     <h3>Arquitectura Electrónica</h3>
                     <div class="card" id="arquitectura-electronica_diseno">
-                        <p style="text-align: justify;">Se diseñó un esquema que muestra los componentes eléctricos y electrónicos con sus respectivas conexiones, facilitando la comprensión del sistema y asegurando la correcta integración de los elementos dentro del robot SCARA. El sistema de control del robot está compuesto por una Raspberry Pi 4, que se comunica con el controlador myRio-1900 a través de una conexión USB-A. Este controlador gestiona las señales y la alimentación de los actuadores y sensores del sistema.
-
-                            El esquema permite visualizar la estructura del sistema y asegurar una correcta distribución de las señales. En la siguiente fase del proyecto, se optimizarán las conexiones en el diseño del PCB para mejorar la integración de los componentes. Se ha asegurado la correcta distribución de los componentes, la definición de las pistas de conexión con la mínima interferencia posible, garantizando un buen funcionamiento y el orden de los elementos electrónicos.</p>
+                        <p style="text-align: justify;">Se diseñó un esquema que muestra los componentes eléctricos 
+                            y electrónicos con sus respectivas conexiones, facilitando la comprensión del sistema y 
+                            asegurando la correcta integración de los elementos dentro del robot SCARA. El sistema 
+                            de control del robot está compuesto por una Raspberry Pi 4, que se comunica con el 
+                            controlador myRio-1900 a través de una conexión USB-A. Este controlador gestiona las 
+                            señales y la alimentación de los actuadores y sensores del sistema.
+                            El esquema permite visualizar la estructura del sistema y asegurar una correcta 
+                            distribución de las señales. En la siguiente fase del proyecto, se optimizarán las 
+                            conexiones en el diseño del PCB para mejorar la integración de los componentes. Se 
+                            ha asegurado la correcta distribución de los componentes, la definición de las pistas 
+                            de conexión con la mínima interferencia posible, garantizando un buen funcionamiento 
+                            y el orden de los elementos electrónicos.</p>
                     </div>
                 </div>
                 
@@ -513,19 +544,19 @@
                 <div class="slides-container" id="slides-proceso_diseno" style="display: none;">
                     <!-- Slide 1 -->
                     <div class="slide">
-                        <h4>Prototipo usado - Vista general 1</h4>
+                        <h4>Prototipo Usado - Vista General 1</h4>
                         <img src="Imagenes/Imagen_1_diseño_3d.jpg" alt="Vista general del diseño 3D">
                     </div>
                     <div class="slide">
-                        <h4>Prototipo usado - Vista general 2</h4>
+                        <h4>Prototipo Usado - Vista General 2</h4>
                         <img src="Imagenes/Imagen_2_diseño_3d.jpg" alt="Vista general del diseño 3D">
                     </div>
                     <div class="slide">
-                        <h4>Prototipo usado - Vista Interna</h4>
+                        <h4>Prototipo Usado - Vista Interna</h4>
                         <img src="Imagenes/Imagen_3_diseño_3d.jpg" alt="Vista general del diseño 3D">
                     </div>
                     <div class="slide">
-                        <h4>Funcionamiento del prototipo</h4>
+                        <h4>Funcionamiento del Prototipo</h4>
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/LYI8onZ0_6Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="slide">
@@ -562,17 +593,17 @@
                 <div class="slides-container" id="slides-arquitectura-electronica_diseno" style="display: none;">
                     <!-- Slide 1 -->
                     <div class="slide">
-                        <h4>Esquema de conexiones eléctricas</h4> <!-- Título de la imagen -->
+                        <h4>Esquema de Conexiones Eléctricas</h4> <!-- Título de la imagen -->
                         <img src="Imagenes/Imagen_1_diseño_electronica.jpg" alt="Imagen 1">
                     </div>
                     <!-- Slide 2 -->
                     <div class="slide">
-                        <h4>Diagrama de control SCARA</h4> <!-- Título de la imagen -->
+                        <h4>Diagrama de Control SCARA</h4> <!-- Título de la imagen -->
                         <img src="Imagenes/Imagen_2_diseño_electronica.jpg" alt="Imagen 2">
                     </div>
                     <!-- Slide 3 -->
                     <div class="slide">
-                        <h4>Distribución de pistas en el PCB</h4> <!-- Título de la imagen -->
+                        <h4>Distribución de Pistas en el PCB</h4> <!-- Título de la imagen -->
                         <img src="Imagenes/Imagen_3_diseño_electronica.jpg" alt="Imagen 3">
                     </div>
                     <!-- Botones de navegación -->
@@ -595,51 +626,51 @@
                 <div class="slides-container" id="slides-proceso-manufactura_construccion" style="display: none;">
                     <!-- Slide 1 -->
                     <div class="slide">
-                        <h4>Ensamblaje completo con electrónica</h4>
+                        <h4>Ensamblaje Completo con Electrónica</h4>
                         <img src="Imagenes/Imagen_1.ensamble_completo.jpg" alt="Ensamblaje completo con electrónica">
                     </div>
                     <!-- Slide 2 -->
                     <div class="slide">
-                        <h4>Vista general del ensamblaje</h4>
+                        <h4>Vista General del Ensamblaje</h4>
                         <img src="Imagenes/Imagen_1_ensamble_general.jpg" alt="Vista general del ensamblaje">
                     </div>
 
                     <div class="slide">
-                        <h4>Proceso de impresión 3D</h4>
+                        <h4>Proceso de Impresión 3D</h4>
                         <img src="Imagenes/Imagen_3_proceso_impresion.jpg" alt="Proceso de impresión 3D - Pieza 3">
                     </div>
                     <div class="slide">
-                        <h4>Proceso de impresión 3D</h4>
+                        <h4>Proceso de Impresión 3D</h4>
                         <img src="Imagenes/Imagen_2_proceso_impresion.jpg" alt="Proceso de impresión 3D - Pieza 2">
                     </div>
                     <!-- Slide 3 -->
                     <div class="slide">
-                        <h4>Proceso de impresión 3D</h4>
+                        <h4>Proceso de Impresión 3D</h4>
                         <img src="Imagenes/Imagen_1_proceso_impresion.jpg" alt="Proceso de impresión 3D - Pieza 1">
                     </div>
                     <!-- Slide 6 -->
                     <div class="slide">
-                        <h4>Piezas terminadas - Vista general</h4>
+                        <h4>Piezas Terminadas - Vista General</h4>
                         <img src="Imagenes/Imagen_1.piezas_terminadas_general.jpg" alt="Piezas terminadas - Vista general">
                     </div>
                     <!-- Slide 7 -->
                     <div class="slide">
-                        <h4>Ensamblaje de la base</h4>
+                        <h4>Ensamblaje de la Base</h4>
                         <img src="Imagenes/Imagen_1_ensamble_base.jpg" alt="Ensamblaje de la base">
                     </div>
                     <!-- Slide 8 -->
                     <div class="slide">
-                        <h4>Ensamblaje del brazo</h4>
+                        <h4>Ensamblaje del Brazo</h4>
                         <img src="Imagenes/Imagen_1_ensamble_brazo.jpg" alt="Ensamblaje del brazo">
                     </div>
                     <!-- Slide 9 -->
                     <div class="slide">
-                        <h4>Construcción general del robot</h4>
+                        <h4>Construcción General del Robot</h4>
                         <img src="Imagenes/Imagen_1_contruccion_general.jpg" alt="Construcción general del robot">
                     </div>
                     <!-- Slide 10 -->
                     <div class="slide">
-                        <h4>Ensamblaje interno del brazo con electrónica</h4>
+                        <h4>Ensamblaje Interno del Brazo con Electrónica</h4>
                         <img src="Imagenes/Imagen_1_ensamble_interno_brazo.jpg" alt="Ensamblaje interno del brazo con electrónica">
                     </div>
                     <!-- Botones de navegación -->
@@ -772,25 +803,57 @@
                     <h3>Proceso de Manufactura</h3>
                     <div class="card" id="proceso-manufactura_construccion">
                         <p style="text-align: justify;">
-                            Una vez finalizado el diseño en 3D y validado mediante simulaciones, se procedió a la fase de manufactura física del robot SCARA. Este proceso implicó la fabricación y ensamblaje de las piezas, así como la integración de los componentes mecánicos y electrónicos.<br><br>
-                            <strong>Fabricación de Piezas:</strong> Las piezas del robot se fabricaron utilizando impresión 3D, lo que permitió obtener componentes precisos y personalizados según el diseño. Los materiales seleccionados para la impresión garantizaron un equilibrio entre resistencia y ligereza, optimizando el desempeño del robot. Las piezas impresas incluyeron la base, los brazos, los soportes de los motores y las carcasas para los componentes electrónicos.<br><br>
-                            <strong>Ensamblaje Mecánico:</strong> El ensamblaje se realizó siguiendo el diseño previamente establecido, utilizando tornillos de diferentes medidas (M2 y M3) para asegurar las piezas. Se emplearon rodamientos en las articulaciones para garantizar un movimiento suave y preciso. Además, se integraron poleas de 20 y 60 dientes junto con correas de transmisión para sincronizar el movimiento de los brazos y mantener la precisión en las operaciones.<br><br>
-                            <strong>Integración de Componentes:</strong> Durante el ensamblaje, se aseguró que todas las piezas encajaran correctamente, verificando la alineación de los ejes y la tensión de las correas. Los motores se fijaron en sus respectivos soportes, y se conectaron a las poleas para transmitir el movimiento a los brazos del robot. Este proceso requirió ajustes iterativos para garantizar que el sistema funcionara de manera óptima.
+                            Una vez finalizado el diseño en 3D y validado mediante simulaciones, se procedió a la 
+                            fase de manufactura física del robot SCARA. Este proceso implicó la fabricación y ensamblaje 
+                            de las piezas, así como la integración de los componentes mecánicos y electrónicos.<br>
+                            <strong>Fabricación de Piezas:</strong> Las piezas del robot se fabricaron utilizando 
+                            impresión 3D, lo que permitió obtener componentes precisos y personalizados según el diseño. 
+                            Los materiales seleccionados para la impresión garantizaron un equilibrio entre resistencia y 
+                            ligereza, optimizando el desempeño del robot. Las piezas impresas incluyeron la base, los brazos, 
+                            los soportes de los motores y las carcasas para los componentes electrónicos.<br>
+                            <strong>Ensamblaje Mecánico:</strong> El ensamblaje se realizó siguiendo el diseño 
+                            previamente establecido, utilizando tornillos de diferentes medidas (M2 y M3) para 
+                            asegurar las piezas. Se emplearon rodamientos en las articulaciones para garantizar un 
+                            movimiento suave y preciso. Además, se integraron poleas de 20 y 60 dientes junto con 
+                            correas de transmisión para sincronizar el movimiento de los brazos y mantener la 
+                            precisión en las operaciones.<br>
+                            <strong>Integración de Componentes:</strong> Durante el ensamblaje, se aseguró que 
+                            todas las piezas encajaran correctamente, verificando la alineación de los ejes y la 
+                            tensión de las correas. Los motores se fijaron en sus respectivos soportes, y se conectaron 
+                            a las poleas para transmitir el movimiento a los brazos del robot. Este proceso 
+                            requirió ajustes iterativos para garantizar que el sistema funcionara de manera óptima.
                         </p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('electronica_construccion', 'construccion')">
                     <h3>Construccion Electrónica</h3>
                     <div class="card" id="electronica_construccion">
-                        <p style="text-align: justify;">La construcción electrónica del robot SCARA se basó en la integración de componentes clave como la Raspberry Pi Pico, el driver de motores L298N, los motores con encoder y los finales de carrera. Las conexiones se realizaron de la siguiente manera:</p>
+                        <p style="text-align: justify;">La construcción electrónica del robot SCARA se basó en la 
+                            integración de componentes clave como la Raspberry Pi Pico, el driver de motores L298N, 
+                            los motores con encoder y los finales de carrera. Las conexiones se realizaron de la 
+                            siguiente manera:</p>
 
-                        <p style="text-align: justify;"><strong>Alimentación:</strong> Se conectó una fuente de 5V a la entrada VSYS de la Raspberry Pi Pico para alimentarla, mientras que el driver de motores recibió 12V para operar los motores de manera eficiente.</p>
+                        <p style="text-align: justify;"><strong>Alimentación:</strong> Se conectó una fuente de 
+                            5V a la entrada VSYS de la Raspberry Pi Pico para alimentarla, mientras que el driver 
+                            de motores recibió 12V para operar los motores de manera eficiente.</p>
                         
-                        <p style="text-align: justify;"><strong>Conexión de motores:</strong> Los dos motores se conectaron a las salidas del driver (OUT1, OUT2, OUT3 y OUT4), permitiendo controlar su dirección y velocidad. La Raspberry Pi Pico se encargó de enviar las señales de control al driver a través de pines GPIO configurados como salidas.</p>
+                        <p style="text-align: justify;"><strong>Conexión de motores:</strong> Los dos motores se 
+                            conectaron a las salidas del driver (OUT1, OUT2, OUT3 y OUT4), permitiendo controlar 
+                            su dirección y velocidad. La Raspberry Pi Pico se encargó de enviar las señales de 
+                            control al driver a través de pines GPIO configurados como salidas.</p>
                         
-                        <p style="text-align: justify;"><strong>Finales de carrera:</strong> Se conectaron cuatro finales de carrera a la Raspberry Pi Pico, utilizando pines GPIO configurados como entradas con resistencias de pull-up. Estos sensores permitieron detectar los límites físicos del movimiento del brazo, lo que fue fundamental para la rutina de homing y para evitar daños por sobrecarga.</p>
+                        <p style="text-align: justify;"><strong>Finales de carrera:</strong> Se conectaron cuatro 
+                            finales de carrera a la Raspberry Pi Pico, utilizando pines GPIO configurados como 
+                            entradas con resistencias de pull-up. Estos sensores permitieron detectar los límites 
+                            físicos del movimiento del brazo, lo que fue fundamental para la rutina de homing y 
+                            para evitar daños por sobrecarga.</p>
                         
-                        <p style="text-align: justify;">El funcionamiento general de la electrónica se centró en controlar los motores para mover el brazo del robot de manera precisa. La Raspberry Pi Pico envió señales al driver para activar los motores en direcciones específicas, mientras que los finales de carrera proporcionaron retroalimentación sobre la posición del brazo. Esto permitió implementar una rutina de homing, donde el brazo se mueve hacia los límites físicos y luego regresa a una posición inicial predefinida.</p>
+                        <p style="text-align: justify;">El funcionamiento general de la electrónica se centró en 
+                            controlar los motores para mover el brazo del robot de manera precisa. La Raspberry 
+                            Pi Pico envió señales al driver para activar los motores en direcciones específicas, 
+                            mientras que los finales de carrera proporcionaron retroalimentación sobre la posición 
+                            del brazo. Esto permitió implementar una rutina de homing, donde el brazo se mueve 
+                            hacia los límites físicos y luego regresa a una posición inicial predefinida.</p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('pruebas-evaluacion_construccion', 'construccion')">
@@ -802,7 +865,16 @@
                 <div class="subseccion" onclick="mostrarSubseccion('presupuesto_construccion', 'construccion')">
                     <h3>Presupuesto</h3>
                     <div class="card" id="presupuesto_construccion">
-                        <p style="text-align: justify;">El desarrollo del robot SCARA requirió una inversión significativa en materiales y componentes, incluyendo filamento para impresión 3D, acrílico, MDF, motoreductores con encoder, servomotores, finales de carrera, borneras, drivers para motores, poleas, varillas para ejes y tornillos, entre otros. Además, se utilizaron componentes electrónicos clave como la Raspberry Pi Pico y la Raspberry Pi 4, junto con una tarjeta microSD de 32 GB. Cabe destacar que algunos de estos elementos, como la Raspberry Pi 4 y la tarjeta microSD, fueron proporcionados por la universidad, lo que ayudó a optimizar los costos del proyecto. En conjunto, estos recursos permitieron la fabricación, ensamblaje y puesta en marcha de un prototipo funcional, equilibrando calidad y eficiencia en el uso de los materiales.</p>
+                        <p style="text-align: justify;">El desarrollo del robot SCARA requirió una inversión 
+                            significativa en materiales y componentes, incluyendo filamento para impresión 3D, 
+                            acrílico, MDF, motoreductores con encoder, servomotores, finales de carrera, borneras, 
+                            drivers para motores, poleas, varillas para ejes y tornillos, entre otros. Además, 
+                            se utilizaron componentes electrónicos clave como la Raspberry Pi Pico y la Raspberry 
+                            Pi 4, junto con una tarjeta microSD de 32 GB. Cabe destacar que algunos de estos 
+                            elementos, como la Raspberry Pi 4 y la tarjeta microSD, fueron proporcionados por 
+                            la universidad, lo que ayudó a optimizar los costos del proyecto. En conjunto, 
+                            estos recursos permitieron la fabricación, ensamblaje y puesta en marcha de un 
+                            prototipo funcional, equilibrando calidad y eficiencia en el uso de los materiales.</p>
                     </div>
                 </div>
             </div>
