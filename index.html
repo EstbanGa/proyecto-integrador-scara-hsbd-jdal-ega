@@ -57,7 +57,8 @@
         /* Contenedores principales */
         .diseno-container,
         .construccion-container,
-        .conclusion-container {
+        .conclusion-container, 
+        .ultimo-container {
             display: flex;
             gap: 20px; /* Espacio entre columnas */
             max-width: 1200px;
@@ -326,7 +327,8 @@
 
         #mensaje-inicial-diseno,
         #mensaje-inicial-construccion,
-        #mensaje-inicial-conclusion {
+        #mensaje-inicial-conclusion,
+        #mensaje-inicial-ultimo {
             text-align: center;
             font-size: 2rem; /* Tamaño más grande */
             font-style: italic; /* Cursiva */
@@ -335,8 +337,9 @@
         }
 
         body.light-mode #mensaje-inicial-diseno,
-        body.light-mode #mensaje-inicial-construccion,
-        body.light-mode #mensaje-inicial-conclusion {
+        body.light-mode #mensaje-inicial-construccion, 
+        body.light-mode #mensaje-inicial-conclusion,
+        body.light-mode #mensaje-inicial-ultimo {
             color: #333;
         }
 
@@ -407,6 +410,7 @@
             <a href="#grupo">Conoce Nuestro Grupo</a>
             <a href="#diseno">Diseño</a>
             <a href="#construccion">Construcción</a>
+            <a href="#ultimo">Proceso Final</a>
             <a href="#conclusion">Conclusiones</a>
             <a href="control.html">Control digital</a>
         </nav>
@@ -416,7 +420,7 @@
         <div class="avances-contenido">
             <h2>Avances</h2>
             <div class="barra-progreso">
-                <div class="progreso" style="width: 50%;">50%</div> <!-- Texto dentro de la barra -->
+                <div class="progreso" style="width: 100%;">100%</div> <!-- Texto dentro de la barra -->
             </div>
             <div class="etiquetas-progreso">
                 <span>0%</span> <!-- Etiqueta de inicio -->
@@ -778,15 +782,6 @@
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'electronica_construccion')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'electronica_construccion')">&#10095;</button>
                 </div>
-                <!-- Carrusel para "Arquitectura Electrónica" -->
-                <div class="slides-container" id="slides-pruebas-evaluacion_construccion" style="display: none;">
-                    <div class="slide">
-                        <img src="Imagenes/EnProceso.jpg" alt="Imagen 1">
-                    </div>
-                    <!-- Botones de navegación -->
-                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'pruebas-evaluacion_construccion')">&#10094;</button>
-                    <button class="slide-button next" onclick="cambiarSlide(1, 'pruebas-evaluacion_construccion')">&#10095;</button>
-                </div>
                 <div class="slides-container" id="slides-presupuesto_construccion" style="display: none;">
                     <div class="slide">
                         <h4>Presupuesto Actual</h4>
@@ -856,12 +851,6 @@
                             hacia los límites físicos y luego regresa a una posición inicial predefinida.</p>
                     </div>
                 </div>
-                <div class="subseccion" onclick="mostrarSubseccion('pruebas-evaluacion_construccion', 'construccion')">
-                    <h3>Pruebas y Evaluación</h3>
-                    <div class="card" id="pruebas-evaluacion_construccion">
-                        <p style="text-align: justify;">En Proceso de correccion...</p>
-                    </div>
-                </div>
                 <div class="subseccion" onclick="mostrarSubseccion('presupuesto_construccion', 'construccion')">
                     <h3>Presupuesto</h3>
                     <div class="card" id="presupuesto_construccion">
@@ -882,31 +871,144 @@
     </section>
 
     <!-- Sección: Conclusion -->
-    <section id="conclusion">
-        <div class="conclusion-container">
+    <section id="ultimo">
+        <div class="ultimo-container">
             <div class="subseccion-columna">
-                <div class="subseccion" onclick="mostrarSubseccion('logros_conclusion', 'conclusion')">
-                    <h3>Logros y Aprendizajes</h3>
-                    <div class="card" id="logros_conclusion">
-                        <p style="text-align: justify;">El desarrollo de este proyecto ha sido una experiencia valiosa, no solo por los resultados obtenidos, sino también por los aprendizajes derivados de los errores y retos enfrentados. Aunque hubo dificultades, como la fractura del impreso en 3D, estos errores permitieron identificar áreas críticas de mejora. Por ejemplo, se comprendió la importancia de realizar pruebas más exhaustivas en el diseño mecánico y de seleccionar adecuadamente los parámetros de impresión para garantizar la resistencia de las piezas.
-                            Además, los desafíos técnicos, como el tensado de las correas y la gestión del largo de los cables, reforzaron la necesidad de prestar atención a los detalles en la fase de diseño y ensamblaje. Estos problemas, aunque afectaron la entrega, sirvieron como lecciones prácticas para futuras iteraciones del proyecto. En conclusión, este proceso ha dejado aprendizajes clave que serán fundamentales para mejorar y avanzar en el desarrollo del robot SCARA.</p>
+                <div class="subseccion" onclick="mostrarSubseccion('modificaciones_final', 'ultimo')">
+                    <h3>Modificaciones Finales</h3>
+                    <div class="card" id="modificaciones_final">
+                        <p style="text-align: justify;">Para mejorar el desempeño del SCARA en la entrega final, 
+                            se realizaron ajustes mecánicos clave: se amplió el ángulo de operación de los finales 
+                            de carrera de 140° a 210° en ambos brazos y se extendió la longitud del brazo 2 de 5 cm 
+                            a 15 cm. Estas modificaciones permitieron expandir el workspace del robot, facilitando 
+                            la ejecución de trayectorias más amplias y reduciendo la saturación del sistema. Un 
+                            workspace pequeño exigía controladores extremadamente precisos para trazar figuras reducidas, 
+                            lo que generaba inestabilidad al intentar alcanzar puntos muy cercanos entre sí. Además, 
+                            el ruido en los encoders se volvía crítico en 
+                            escalas reducidas, afectando la calidad de las trayectorias. Con el nuevo rango, el sistema 
+                            ganó margen para operar con mayor fluidez, minimizando el impacto de las imperfecciones 
+                            en las señales y mejorando la consistencia del movimiento.</p>
                     </div>
                 </div>
-                <div class="subseccion" onclick="mostrarSubseccion('retos_conclusion', 'conclusion')">
-                    <h3>Retos</h3>
-                    <div class="card" id="retos_conclusion">
-                        <p style="text-align: justify;">Uno de los mayores retos fue lograr que el robot se moviera de forma fluida y precisa, lo que requirió un tensado adecuado de las correas de distribución y ajustes iterativos en el ensamblaje. Este proceso demandó múltiples pruebas y revisiones para garantizar que los movimientos fueran suaves y sin irregularidades, lo que implicó un esfuerzo significativo en la calibración y el ajuste de los componentes mecánicos. Además, el tiempo fue un factor crítico en todo el proyecto, ya que cada fase, desde el diseño en 3D hasta la fabricación y las pruebas, requirió una planificación rigurosa para cumplir con los plazos establecidos. La coordinación entre el diseño, la manufactura y la integración de los sistemas fue clave para avanzar de manera eficiente, aunque en ocasiones los imprevistos técnicos y la necesidad de ajustes retrasaron el progreso.</p>
+                <div class="subseccion" onclick="mostrarSubseccion('meta_final', 'ultimo')">
+                    <h3>Metas</h3>
+                    <div class="card" id="meta_final">
+                        <p style="text-align: justify;">El desarrollo del robot SCARA se enfocó en alcanzar cuatro 
+                            objetivos principales que permitieron validar su funcionamiento integral. La primera 
+                            meta consistió en implementar la rutina de home, que no solo sirvió para calibrar el 
+                            sistema sino también como prueba inicial del desempeño de los controladores PID, 
+                            confirmando su capacidad para llevar al robot a su posición de referencia de manera 
+                            estable y precisa.<br>
+                            Un segundo objetivo fue lograr que el SCARA alcanzara diversos puntos de manera individual 
+                            dentro de su workspace ampliado. Esta prueba demostró la exactitud del posicionamiento y 
+                            la efectividad de las modificaciones mecánicas realizadas, que permitieron un rango de 
+                            movimiento más amplio y versátil.<br>
+                            Como tercer objetivo, se trabajó en el seguimiento de trayectorias rectas entre dos puntos 
+                            definidos. Este paso fue fundamental para evaluar la coordinación entre los motores y la 
+                            fluidez del movimiento en rutas básicas, sirviendo como transición hacia pruebas más complejas.<br>
+                            El cuarto y más importante objetivo fue la realización de trayectorias compuestas 
+                            por múltiples puntos, planteado en dos modalidades. Por un lado, se buscó implementar 
+                            un trazado punto a punto donde el robot, mediante un servomotor y un marcador, activaría 
+                            el trazo solo al alcanzar cada posición, creando una representación por "puntillismo" 
+                            que validaría la precisión del posicionamiento. Por otro lado, estaba previsto un modo 
+                            continuo donde el marcador permanecería activo durante todo el recorrido, permitiendo trazar 
+                            líneas ininterrumpidas que demostrarían la capacidad del sistema para movimientos fluidos y 
+                            coordinados. Estas pruebas finales, aunque no se completaron en su totalidad, mostraron el 
+                            potencial del sistema y dejaron claros los aspectos por mejorar para futuras implementaciones.
+                        </p>
                     </div>
                 </div>
-                <div class="subseccion" onclick="mostrarSubseccion('error_conclusion', 'conclusion')">
-                    <h3>Errores</h3>
-                    <div class="card" id="error_conclusion">
-                        <p style="text-align: justify;">Durante el desarrollo del proyecto, se presentaron varios errores que afectaron significativamente el proceso y, en particular, en el momento de la sustentación. El principal fallo fue no considerar adecuadamente la distribución de la carga al mover el brazo del robot, lo que generó una ruptura crítica en el soporte de unión entre el eje y el brazo. Este problema se agravó debido a la baja densidad de impresión utilizada en algunas piezas, lo que las hizo propensas a fracturarse incluso con impactos leves. La fractura del eje en 3D, sin duda, impidió que el prototipo funcionara al momento de la entrega.
-
-                            Otro error significativo fue el diseño inadecuado del largo de los cables, que, debido al movimiento constante del brazo, se desconectaban repetidamente, interrumpiendo el funcionamiento del sistema. Estos problemas, aunque identificados durante las pruebas, no fueron resueltos, lo que afectó directamente la calidad robot y su sustentación.</p>
+                <div class="subseccion" onclick="mostrarSubseccion('entrega_final', 'ultimo')">
+                    <h3>Entrega Final</h3>
+                    <div class="card" id="entrega_final">
+                        <p style="text-align: justify;">Al culminar el proyecto, el robot SCARA demostró un funcionamiento 
+                            satisfactorio en aspectos clave de robótica y control. Se implementó exitosamente la cinemática 
+                            directa e inversa, permitiendo al robot posicionarse con precisión en coordenadas específicas 
+                            y realizar movimientos básicos entre puntos definidos. Las pruebas de trayectorias rectas se 
+                            completaron con éxito, validando la coordinación entre los motores y la efectividad de los 
+                            controladores PID ajustados. Sin embargo, no se logró implementar completamente las trayectorias 
+                            complejas continuas ni el trazado mediante puntillismo, principalmente por limitaciones en la 
+                            integración del sistema de marcado (servomotor y herramienta de escritura). A pesar de esto, el 
+                            SCARA demostró capacidad para movimientos rápidos y precisos en su workspace ampliado, confirmando 
+                            que la base del SCARA (Robotica, control y estructura mecánica) funcionaba correctamente. Los 
+                            resultados obtenidos, aunque no completaron el 100% de los objetivos, sentaron las bases para futuras
+                            mejoras, particularmente en la integración de sistemas de trazado y optimización de trayectorias 
+                            continuas.</p>
                     </div>
                 </div>
             </div>
+            <div class="info-visual" id="info-visual-ultimo">
+                <div id="mensaje-inicial-ultimo">
+                    <h3>Proceso Final</h3>
+                </div>
+
+                <div class="slides-container" id="slides-modificaciones_final" style="display: none;">
+                    <div class="slide">
+                        <h4>Diseño Final</h4>
+                        <img src="Imagenes/Modelo_Final.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="slide">
+                        <h4>Diseño Final</h4>
+                        <img src="Imagenes/Modelo_Final_1.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <h4>Implementacion Electronica Final</h4>
+                        <img src="Imagenes/Base_Electronica.jpg" alt="Imagen 2">
+                    </div>
+
+                    <div class="slide">
+                        <h4>Base MDF</h4>
+                        <img src="Imagenes/Base_Scara.jpg" alt="Imagen 4">
+                    </div>
+
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'modificaciones_final')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'modificaciones_final')">&#10095;</button>
+                </div>
+
+                <div class="slides-container" id="slides-meta_final" style="display: none;">
+                    <div class="slide">
+                        <h4>Trayectoria Final</h4>
+                        <img src="Imagenes/Trayectoria.jpg" alt="Imagen 1">
+                    </div>
+                    <div class="slide">
+                        <h4>Proceso Home</h4>
+                        <iframe 
+                            width="560" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/4e5nU_3Yj6U" 
+                            title="YouTube video player" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            style="border: none;">
+                        </iframe>
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'meta_final')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'meta_final')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-entrega_final" style="display: none;">
+                    <div class="slide">
+                        <h4>Funcionamiento Final</h4>
+                        <iframe 
+                            width="560" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/RqqtnJDclq0" 
+                            title="YouTube video player" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            style="border: none;">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Conclusion -->
+    <section id="conclusion">
+        <div class="conclusion-container">
             <div class="info-visual" id="info-visual-conclusion">
                 <div id="mensaje-inicial-conclusion">
                     <h3>Conclusiones</h3>
@@ -914,16 +1016,16 @@
 
                 <div class="slides-container" id="slides-logros_conclusion" style="display: none;">
                     <div class="slide">
-                        <h4>Comparación Diseño actual vs Primer Diseño</h4>
-                        <img src="Imagenes/Final_VS_Inicial.jpg" alt="Imagen 3">
+                        <h4>Diseño Final</h4>
+                        <img src="Imagenes/Modelo_Final.jpg" alt="Imagen 1">
                     </div>
                     <div class="slide">
                         <h4>Software Inventor Autodesk</h4>
                         <img src="Imagenes/Inventor.png" alt="Imagen 1">
                     </div>
                     <div class="slide">
-                        <h4>Software Thonny - MicroPython</h4>
-                        <img src="Imagenes/Thonny.jpg" alt="Imagen 2">
+                        <h4>Software Arduino -  C++</h4>
+                        <img src="Imagenes/Arduino_Logo.png" alt="Imagen 2">
                     </div>
 
                     <!-- Botones de navegación -->
@@ -940,27 +1042,108 @@
                         <h4>Reto en la Organizacion y Largo de Cables</h4>
                         <img src="Imagenes/Cables.jpg" alt="Imagen 2">
                     </div>
+
+                    <div class="slide">
+                        <h4>Reto en las señales de los encoders</h4>
+                        <img src="Imagenes/Señal_Encoder_2.png" alt="Imagen 2">
+                    </div>
+
+                    <div class="slide">
+                        <h4>Reto en la Organizacion y Largo de Cables</h4>
+                        <img src="Imagenes/Cables.jpg" alt="Imagen 2">
+                    </div>
+
+                    <div class="slide">
+                        <h4>Reto en la Organizacion y Largo de Cables</h4>
+                        <img src="Imagenes/Cables.jpg" alt="Imagen 2">
+                    </div>
+
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'retos_conclusion')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'retos_conclusion')">&#10095;</button>
                 </div>
                 <!-- Carrusel para "Arquitectura Electrónica" -->
                 <div class="slides-container" id="slides-error_conclusion" style="display: none;">
-                    <div class="slide">
-                        <h4>Fractura Soporte Eje-Brazo</h4>
-                        <img src="Imagenes/Error_1.jpg" alt="Imagen 1">
+                    <div class="card" id="error_conclusion">
+                        <p style="text-align: justify;">A quienes se preparan para cursar Robótica Industrial, les compartimos 
+                            algunas recomendaciones basadas en nuestra experiencia, con el objetivo de que aprovechen al máximo 
+                            el curso y eviten errores comunes:<br><br>
+
+                            1. Prueba todos los componentes desde el inicio<br> Antes de integrar cualquier parte del sistema, 
+                            verifica el funcionamiento de todos los componentes eléctricos y mecánicos: motores, sensores, 
+                            drivers, fuentes de poder, etc. En nuestro caso, tuvimos que cambiar los motores hasta tres veces y, 
+                            al final, trabajamos con uno que no estaba funcionando al 100%. Anticiparte a este tipo de problemas 
+                            te ahorrará tiempo valioso más adelante.<br><br>
+
+                            2. Adelanta el diseño CAD y las impresiones/ensambles<br> Uno de los pasos más importantes es terminar 
+                            cuanto antes el diseño CAD y realizar las impresiones o ensambles mecánicos. Esto te permitirá montar 
+                            todos los componentes en su posición final y comenzar cuanto antes con la parametrización de los motores 
+                            y la integración del sistema completo.<br><br>
+
+                            3. Prioriza la programación de trayectorias<br> Una vez el sistema esté montado, enfoca tus esfuerzos 
+                            en programar las trayectorias de los actuadores. Para facilitar esta tarea, asegúrate de tener un workspace 
+                            (espacio de trabajo) amplio desde el diseño: los ángulos de movimiento de los brazos deberían ser mayores 
+                            a 250° para lograr trayectorias fluidas y útiles.
+                        </p>
                     </div>
-                    <div class="slide">
-                        <h4>Fractura Eje-Base 1</h4>
-                        <img src="Imagenes/Error_2.jpg" alt="Imagen 2">
+                </div>
+            </div>
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('logros_conclusion', 'conclusion')">
+                    <h3>Logros y Aprendizajes</h3>
+                    <div class="card" id="logros_conclusion">
+                        <p style="text-align: justify;">El desarrollo de este proyecto representó una 
+                            evolución significativa desde la primera entrega hasta la versión final, 
+                            dejando valiosos aprendizajes técnicos y organizativos. En la fase inicial, 
+                            enfrentamos desafíos como la fractura de piezas impresas en 3D, lo que nos enseñó 
+                            la importancia de optimizar parámetros de impresión y validar diseños mecánicos con 
+                            pruebas exhaustivas. Estos problemas iniciales fueron superados en la versión final 
+                            mediante el refuerzo estructural de componentes críticos y un mejor proceso de fabricación.<br>
+
+                            En el aspecto robótico, logramos implementar con éxito la cinemática directa e inversa, 
+                            junto con controladores PID funcionales que permitieron movimientos precisos y estables. 
+                            Sin embargo, también identificamos limitaciones, como la dificultad para implementar 
+                            completamente el sistema de trazado de trayectorias, debido principalmente a problemas de 
+                            gestión de tiempo y coordinación en el equipo.<br>
+
+                            Los retos prácticos reforzaron la necesidad de prestar atención a detalles mecánicos y electrónicos 
+                            desde la etapa de diseño. Aunque no alcanzamos todos los objetivos planteados, el proyecto 
+                            demostró que con mejor organización, selección adecuada de compañeros de equipo y una 
+                            distribución clara de responsabilidades, los resultados podrían haber sido más completos. 
+                            Estas experiencias dejan lecciones fundamentales para futuros desarrollos en robótica, 
+                            destacando que el éxito técnico va de la mano con una buena planificación y trabajo en equipo.
+                        </p>
                     </div>
-                    <div class="slide">
-                        <h4>Fractura Eje-Base 2</h4>
-                        <img src="Imagenes/Error_3.jpg" alt="Imagen 3">
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('retos_conclusion', 'conclusion')">
+                    <h3>Retos</h3>
+                    <div class="card" id="retos_conclusion">
+                        <p style="text-align: justify;">El proyecto presentó desafíos técnicos y organizativos que pusieron 
+                            a prueba nuestras capacidades de solución de problemas. El principal reto técnico fue lograr 
+                            movimientos fluidos y precisos, lo que requirió múltiples iteraciones en el tensado de correas, 
+                            calibración de encoders y ajuste de los parámetros de los controladores PID. Estos problemas 
+                            mecánicos -que en la primera entrega causaban vibraciones y errores de posicionamiento- fueron 
+                            superados en la versión final mediante el rediseño de soportes y un protocolo de calibración más 
+                            riguroso.<br>
+
+                            La integración de los sistemas demostró ser otro desafío significativo. La sincronización entre 
+                            la electrónica (motores, drivers y controladores), la parte mecánica y el software de control 
+                            demandó constantes ajustes, particularmente para reducir el ruido en las señales de los encoders 
+                            que afectaba la precisión. El workspace ampliado, aunque beneficioso, introdujo nuevas complejidades 
+                            en la planificación de trayectorias que debieron resolverse mediante modificaciones en la cinemática.<br>
+
+                            La gestión del tiempo y la coordinación del equipo emergieron como retos recurrentes. Si bien en la 
+                            entrega final mejoramos la división de tareas, persistieron cuellos de botella en la integración de 
+                            subsistemas que afectaron la implementación completa del trazador de trayectorias. La superación de 
+                            estos obstáculos nos permitió no solo entregar un sistema funcional, sino también acumular experiencia 
+                            valiosa en integración de sistemas robóticos, destacando la importancia de prototipado rápido, pruebas 
+                            incrementales y documentación rigurosa de cada modificación realizada.
+                        </p>
                     </div>
-                    <!-- Botones de navegación -->
-                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'error_conclusion')">&#10094;</button>
-                    <button class="slide-button next" onclick="cambiarSlide(1, 'error_conclusion')">&#10095;</button>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('error_conclusion', 'conclusion')">
+                    <h3>Recomendaciones Finales</h3>
+
                 </div>
             </div>
         </div>
@@ -1090,6 +1273,7 @@
         // Reiniciar secciones al cargar la página
         reiniciarSeccion('diseno');
         reiniciarSeccion('construccion');
+        reiniciarSeccion('ultimo');
         reiniciarSeccion('conclusion');
     </script>
 </body>

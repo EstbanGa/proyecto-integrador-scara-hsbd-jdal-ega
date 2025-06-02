@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Integrador SCARA</title>
+    <alt>Proyecto Integrador SCARA</alt>
     <style>
 
         body {
@@ -54,7 +54,9 @@
         .control_1-container,
         .control_2-container,
         .control_3-container,
-        .control_4-container{
+        .control_4-container,
+        .control_5-container,
+        .control_6-container{
             display: flex;
             gap: 20px; /* Espacio entre columnas */
             max-width: 1200px;
@@ -309,14 +311,16 @@
         }
 
         #mensaje-inicial-control_1, #mensaje-inicial-control_2,
-        #mensaje-inicial-control_3,#mensaje-inicial-control_4{
+        #mensaje-inicial-control_3,#mensaje-inicial-control_4,
+        #mensaje-inicial-control_5,#mensaje-inicial-control_6{
             text-align: center;
             padding: 20px;
             color: white;
         }
 
         body.light-mode #mensaje-inicial-control_1, body.light-mode#mensaje-inicial-control_2,
-        body.light-mode#mensaje-inicial-control_3, body.light-mode#mensaje-inicial-control_4{
+        body.light-mode#mensaje-inicial-control_3, body.light-mode#mensaje-inicial-control_4,
+        body.light-mode#mensaje-inicial-control_5, body.light-mode#mensaje-inicial-control_6{
             color: #333;
         }
 
@@ -392,7 +396,7 @@
         <div class="avances-contenido">
             <h2>Avances</h2>
             <div class="barra-progreso">
-                <div class="progreso" style="width: 50%;">50%</div> <!-- Texto dentro de la barra -->
+                <div class="progreso" style="width: 100%;">100%</div> <!-- Texto dentro de la barra -->
             </div>
             <div class="etiquetas-progreso">
                 <span>0%</span> <!-- Etiqueta de inicio -->
@@ -782,27 +786,189 @@
         </div>
     </section>
 
-    <!-- Sección: Control_4 -->
-    <section id="control_4">
-        <div class="control_4-container">
+    <!-- Sección: Control_5 -->
+    <section id="control_5">
+        <div class="control_5-container">
             <!-- Información visual de Diseño (6 columnas derecha) -->
-            <div class="info-visual" id="info-visual-control_4">
-                <div id="mensaje-inicial-control_4">
-                    <h3>Análisis Posteriores</h3>
-                    <p style="text-align: justify;">Para garantizar la estabilidad y el desempeño del sistema 
-                        tras la discretización con el método de Tustin, se aplicaron diversos criterios de análisis. 
-                        Se utilizó el criterio de estabilidad de Jury y Routh para verificar que los polos 
-                        permanecieran dentro del círculo unitario, asegurando que la discretización no afectara 
-                        la estabilidad del sistema. Luego, mediante el análisis del lugar de las raíces, se 
-                        evaluó cómo la ganancia influía en la ubicación de los polos y cómo se mantenía la 
-                        estructura del sistema en su versión discreta. Además, se diseñó un lazo de realimentación 
-                        con ganancia proporcional para examinar su impacto en la estabilidad y respuesta del 
-                        sistema. Finalmente, se llevó a cabo un análisis en frecuencia a través de diagramas 
-                        de Bode para validar los márgenes de ganancia y fase, garantizando un adecuado desempeño 
-                        del sistema discretizado.</p>
+            <div class="info-visual" id="info-visual-control_5">
+                <div id="mensaje-inicial-control_5">
+                    <h3>Controladores</h3>
+                    <p style="text-align: justify;">El correcto funcionamiento del robot SCARA depende críticamente 
+                        del diseño e implementación de sus sistemas de control. En este desarrollo, se implementaron 
+                        controladores PID tanto para la posición como para la velocidad de los motores, con el objetivo 
+                        de garantizar precisión en el posicionamiento y seguimiento de trayectorias.</p>
                 </div>
                 <!-- Carrusel para "Resumen Ejecutivo" -->
-                <div class="slides-container" id="slides-resumen-ejecutivo_control_4" style="display: none;">
+                <div class="slides-container" id="slides-resumen-ejecutivo_control_5" style="display: none;">
+                    
+                    <div class="slide"> 
+                        <h3>Funcion Controlador Velocidad Ganancia Ultima</h3>
+                        <img src="Imagenes/Fun_Vel_GU.png" alt="Funcion Controlador Velocidad Ganancia Ultima">
+                    </div>
+                    
+                    <div class="slide">
+                        <h3>Funcion Controlador Posicion Ganancia Ultima</h3>
+                        <img src="Imagenes/Fun_Pos_GU.png" alt="Funcion Controlador Posicion Ganancia Ultima">
+                    </div>
+                    
+                    <div class="slide">
+                        <h3>Funcion Controlador Velocidad Cruva de Reaccion</h3>
+                        <img src="Imagenes/Fun_Vel_CR.png" alt="Funcion Controlador Velocidad Cruva de Reaccion">
+                    </div>
+                    
+                    <div class="slide">
+                        <h3>Funcion Controlador Posicion Cruva de Reaccion</h3>
+                        <img src="Imagenes/Fun_Pos_CR.png" alt="Funcion Controlador Posicion Cruva de Reaccion">
+                    </div> 
+                        
+                    <div class="slide">
+                        <h3>Funcion Controlador Velocidad Asignacion de Polos</h3>
+                        <img src="Imagenes/Fun_Vel_AP.png" alt="Funcion Controlador Velocidad Asignacion de Polos">
+                    </div>
+                    
+                    <div class="slide">
+                        <h3>Funcion Controlador Posicion Asignacion de Polos</h3>
+                        <img src="Imagenes/Fun_Pos_AP.png" alt="Funcion Controlador Posicion Asignacion de Polos">
+                    </div> 
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_5')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_5')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-arquitectura-electronica_control_5" style="display: none;">
+                    <div class="slide"> 
+                        <h3>Comportamiento Controlador Velocidad Ganancia Ultima</h3>
+                        <img src="Imagenes/Ganancia_Velocidad.png" alt="Comportamiento Controlador Velocidad Ganancia Ultima">
+                    </div>
+                    
+                    <div class="slide">
+                        <h3>Comportamiento Controlador Posicion Ganancia Ultima</h3>
+                        <img src="Imagenes/Ganancia_Posicion.png" alt="Comportamiento Controlador Posicion Ganancia Ultima">
+                    </div>
+                    
+                    <div class="slide">
+                        <h3>Comportamiento Controlador Velocidad Cruva de Reaccion</h3>
+                        <img src="Imagenes/Curva_Velocidad.png" alt="Comportamiento Controlador Velocidad Cruva de Reaccion">
+                    </div>
+                    
+                    <div class="slide">
+                        <h3>Comportamiento Controlador Posicion Cruva de Reaccion</h3>
+                        <img src="Imagenes/Curva_Posicion.png" alt="Comportamiento Controlador Posicion Cruva de Reaccion">
+                    </div> 
+                        
+                    <div class="slide">
+                        <h3>Comportamiento Controlador Velocidad Asignacion de Polos</h3>
+                        <img src="Imagenes/Asignacion_Velocidad.png" alt="Comportamiento Controlador Velocidad Asignacion de Polos">
+                    </div>
+                    
+                    <div class="slide">
+                        <h3>Comportamiento Controlador Posicion Asignacion de Polos</h3>
+                        <img src="Imagenes/Asiganacion_Posicion.png" alt="Comportamiento Controlador Posicion Asignacion de Polos">
+                    </div> 
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_5')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_5')">&#10095;</button>
+                </div>
+            </div>
+            <!-- Subsecciones de Diseño (6 columnas izquierda) -->
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_5', 'control_5')">
+                    <h3>Controladores</h3>
+                    <div class="card" id="resumen-ejecutivo_control_5">
+                        <p style="text-align: justify;">Para el control de los motores del robot SCARA, se diseñaron 
+                        e implementaron dos estrategias de control: un controlador de velocidad y un controlador 
+                        de posición, ambos basados en estructura PID. Inicialmente se evaluaron ambos esquemas para 
+                        determinar cuál ofrecía el mejor desempeño en el seguimiento de trayectorias durante la rutina de homing.<br> 
+                        Tras las pruebas, se determinó que el control de posición era más adecuado para esta aplicación, 
+                        ya que permitía un posicionamiento más preciso y directo del efector final, eliminando la necesidad 
+                        de un lazo de velocidad adicional. Este enfoque simplificó la arquitectura de control sin comprometer 
+                        el rendimiento, asegurando un movimiento estable y exacto hacia la posición home. El controlador 
+                        de velocidad, aunque funcional, resultó menos relevante para este caso específico, por lo que se 
+                        descartó en la implementación final.<br> 
+                        La sintonización del PID de posición se realizó mediante métodos como Ziegler-Nichols y asignación 
+                        de polos, logrando una respuesta rápida y sin oscilaciones. La discretización con Tustin garantizó 
+                        su correcto funcionamiento en el sistema digital, validándose mediante pruebas experimentales que 
+                        confirmaron su precisión y robustez.<br> 
+                        Este esquema de control demostró ser eficiente para la aplicación requerida, optimizando tanto el 
+                        desempeño como la complejidad del sistema.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_5', 'control_5')">
+                    <h3>Pruebas Controlador en el SCARA</h3>
+                    <div class="card" id="arquitectura-electronica_control_5">
+                        <p style="text-align: justify;">Durante las pruebas iniciales, se presentó un error en estado estable significativo,
+                        lo cual era esperado debido a las diferencias entre el modelo teórico y el sistema real. Estas discrepancias se 
+                        debían principalmente al mayor peso de los brazos mecánicos y a los esfuerzos dinámicos no considerados en la 
+                        etapa de diseño. Para corregir este comportamiento, fue necesario reajustar el controlador de posición, modificando 
+                        sus ganancias para compensar estas variaciones.<br> 
+                        Los valores finales del PID permitieron lograr un control preciso en la posición home, así como un seguimiento 
+                        aceptable de trayectorias y puntos específicos. Sin embargo, durante el seguimiento de trayectorias continuas 
+                        (como trazos), el sistema aún presentaba ciertas irregularidades, como movimientos anómalos o bloqueos ocasionales. 
+                        Esto sugería la presencia de efectos no lineales no compensados (como fricción o inercias variables). A pesar esto, 
+                        el posicionamiento en puntos específicos se conseguía de manera consistente y precisa, demostrando que el 
+                        controlador funcionaba correctamente para aplicaciones de posicionamiento estático.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Control_6 -->
+    <section id="control_6">
+        <div class="control_6-container">
+            <!-- Subsecciones de Diseño (6 columnas izquierda) -->
+            <div class="subseccion-columna">
+                <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_6', 'control_6')">
+                    <h3>Método de Jury & Routh, Root Locus</h3>
+                    <div class="card" id="resumen-ejecutivo_control_6">
+                        <p style="text-align: justify;">Para evaluar la estabilidad y el desempeño de las funciones 
+                            de transferencia obtenidas tras la discretización mediante el método de Tustin, se 
+                            aplicaron diferentes criterios de estabilidad y análisis en frecuencia. En primer lugar, 
+                            se utilizó el criterio de estabilidad de Jury y Routh para comprobar que los sistemas 
+                            discretizados mantuvieran sus características de estabilidad sin introducir polos fuera 
+                            del círculo unitario en el dominio Z. Esto permitió validar que la discretización no 
+                            comprometiera el comportamiento estable del sistema.<br> 
+                            Posteriormente, se realizó un análisis detallado del lugar de las raíces (Root Locus) 
+                            para ambas funciones de transferencia, tanto en su versión continua como en su versión 
+                            discretizada. Con esto, se pudo observar cómo la ganancia afecta la ubicación de los 
+                            polos y cómo se mantiene la estructura general del sistema tras la discretización. Además, 
+                            para evaluar el desempeño del controlador en el dominio discreto, se diseñó un lazo de 
+                            realimentación unitario con una ganancia proporcional kp, permitiendo analizar el efecto 
+                            de este control en la estabilidad y respuesta del sistema.<br>                             
+                            Finalmente, se llevó a cabo un análisis en frecuencia a través de los diagramas de Bode 
+                            para verificar los márgenes de ganancia y de fase, asegurando que el sistema discretizado 
+                            conserve un adecuado margen de estabilidad y respuesta ante perturbaciones. El método de 
+                            discretización seleccionado no solo permitió mantener la estabilidad del sistema, sino 
+                            que también preservó el comportamiento dinámico del modelo original, asegurando que las 
+                            características deseadas para el control del motor se mantuvieran tras el proceso de 
+                            digitalización.</p>
+                    </div>
+                </div>
+                <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_6', 'control_6')">
+                    <h3>Posible Implementacion de Filtros</h3>
+                    <div class="card" id="arquitectura-electronica_control_6">
+                        <p style="text-align: justify;">Durante la implementación del SCARA, se observó que las señales 
+                            de los encoders presentaban cierto nivel de ruido, lo cual podía afectar la precisión en el 
+                            control de posición. Aunque el controlador PID funcionó adecuadamente, una posible mejora 
+                            hubiera sido la implementación de filtros digitales (como un filtro pasa-bajos o un filtro 
+                            de mediana) para suavizar estas señales y reducir interferencias. Otra alternativa más avanzada 
+                            habría sido el uso de un filtro de Kalman, el cual no solo mitiga el ruido, sino que también 
+                            podría estimar estados no medidos directamente, mejorando la robustez del sistema ante 
+                            perturbaciones. Si bien no fue necesario para el alcance básico del proyecto, estas técnicas 
+                            podrían explorarse en futuras iteraciones para optimizar aún más el desempeño del robot, 
+                            especialmente en aplicaciones que demanden mayor precisión o velocidad.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Información visual de Diseño (6 columnas derecha) -->
+            <div class="info-visual" id="info-visual-control_6">
+                <div id="mensaje-inicial-control_6">
+                    <h3>Pruebas Reales</h3>
+                    <p style="text-align: justify;"></p>
+                </div>
+                <!-- Carrusel para "Resumen Ejecutivo" -->
+                <div class="slides-container" id="slides-resumen-ejecutivo_control_6" style="display: none;">
+
                     <div class="slide">
                         <h3>Motor 1 - Root Locus TF con Pade</h3>
                         <img src="Imagenes/Motor_1_RootLocus_TFPade.png" alt="Motor 1 - Root Locus TF con Pade">
@@ -859,76 +1025,129 @@
                         <h3>Motor 2 - Diagrama de Bode</h3>
                         <img src="Imagenes/Motor_2_Bode.png" alt="Motor 2 - Diagrama de Bode">
                     </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_6')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_6')">&#10095;</button>
+                </div>
+                <!-- Carrusel para "Arquitectura Electrónica" -->
+                <div class="slides-container" id="slides-arquitectura-electronica_control_6" style="display: none;">
                     
+                    <div class="slide"> 
+                        <h3>Señal 1 con Ruido del Encoder</h3>
+                        <img src="Imagenes/Señal_Encoder_1.png" alt="Señal 1 con Ruido del Encoder">
+                    </div>
+                    
+                    <div class="slide"> 
+                        <h3>Señal Filtrada 1 del Encoder</h3>
+                        <img src="Imagenes/Señal_Filtrada_1.png" alt="Señal Filtrada 1 del Encoder">
+                    </div>
+
+                    <div class="slide">
+                        <h3>Señal 2 con Ruido del Encoder</h3>
+                        <img src="Imagenes/Señal_Encoder_2.png" alt="Señal 2 con Ruido del Encoder">
+                    </div>
+
+                    <div class="slide">
+                        <h3>Señal Filtrada 2 del Encoder</h3>
+                        <img src="Imagenes/Señal_Filtrada_2.png" alt="Señal Filtrada 2 del Encoder">
+                    </div>
+
+                    <div class="slide">
+                        <h3>Señal 3 con Ruido del Encoder</h3>
+                        <img src="Imagenes/Señal_Encoder_3.png" alt="Señal 3 con Ruido del Encoder">
+                    </div>
+
+                    <div class="slide">
+                        <h3>Señal Filtrada 3 del Encoder</h3>
+                        <img src="Imagenes/Señal_Filtrada_3.png" alt="Señal Filtrada 3 del Encoder">
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_6')">&#10094;</button>
+                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_6')">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sección: Control_4 -->
+    <section id="control_4">
+        <div class="control_4-container">
+            <!-- Información visual de Diseño (6 columnas derecha) -->
+            <div class="info-visual" id="info-visual-control_4">
+                <div id="mensaje-inicial-control_4">
+                    <h3>Proceso Final</h3>
+                    <p style="text-align: justify;"></p>
+                </div>
+                <!-- Carrusel para "Resumen Ejecutivo" -->
+                <div class="slides-container" id="slides-resumen-ejecutivo_control_4" style="display: none;">
+
+                    <div class="slide">
+                        <h4>Funcionamiento Final</h4>
+                        <iframe 
+                            width="560" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/RqqtnJDclq0" 
+                            title="YouTube video player" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            style="border: none;">
+                        </iframe>
+                    </div>
                     <!-- Botones de navegación -->
                     <button class="slide-button prev" onclick="cambiarSlide(-1, 'resumen-ejecutivo_control_4')">&#10094;</button>
                     <button class="slide-button next" onclick="cambiarSlide(1, 'resumen-ejecutivo_control_4')">&#10095;</button>
                 </div>
                 <!-- Carrusel para "Arquitectura Electrónica" -->
                 <div class="slides-container" id="slides-arquitectura-electronica_control_4" style="display: none;">
-                    <div class="slide">
-                        <h3>Conclusiones</h3>
+
+                    <div class="card" id="arquitectura-electronica_control_4">
+                        <p style="text-align: justify;">El desarrollo del robot SCARA permitió validar tanto aspectos 
+                            teóricos (modelado, discretización y diseño de controladores) como prácticos de implementación. 
+                            Inicialmente se exploró el uso de un controlador RST, pero debido a complejidades en su ajuste 
+                            y desempeño, se optó por mantener los controladores PID tradicionales, los cuales demostraron 
+                            ser suficientes para un posicionamiento preciso y movimientos estables.<br>
+                            En la entrega final, el sistema cumplió satisfactoriamente con movimientos puntuales, rapidez 
+                            y fluidez en sus operaciones básicas. Sin embargo, no se logró demostrar el trazado de trayectorias 
+                            continuas mediante un marcador o lápiz acoplado, un objetivo clave que quedó pendiente por 
+                            problemas de organización y gestión del tiempo dentro del equipo.<br>
+                            Como recomendación final, este proyecto evidencia que, con una mejor estructura de 
+                            trabajo (incluyendo posiblemente una selección más estratégica de los integrantes del equipo) y 
+                            una distribución clara de responsabilidades, se habría podido alcanzar el 100% de los objetivos. 
+                            A pesar de esto, el SCARA demostró tener una base técnica funcional, dejando abierta la posibilidad 
+                            de mejorar tanto en aspectos de control avanzado como en dinámicas de trabajo colaborativo para 
+                            futuras iteraciones.
+                        </p>
                     </div>
-                    <!-- Botones de navegación -->
-                    <button class="slide-button prev" onclick="cambiarSlide(-1, 'arquitectura-electronica_control_4')">&#10094;</button>
-                    <button class="slide-button next" onclick="cambiarSlide(1, 'arquitectura-electronica_control_4')">&#10095;</button>
+                    
                 </div>
             </div>
             <!-- Subsecciones de Diseño (6 columnas izquierda) -->
             <div class="subseccion-columna">
                 <div class="subseccion" onclick="mostrarSubseccion('resumen-ejecutivo_control_4', 'control_4')">
-                    <h3>Método de Jury & Routh, Root Locus</h3>
+                    <h3>Pruebas Finales</h3>
                     <div class="card" id="resumen-ejecutivo_control_4">
-                        <p style="text-align: justify;">Para evaluar la estabilidad y el desempeño de las funciones 
-                            de transferencia obtenidas tras la discretización mediante el método de Tustin, se 
-                            aplicaron diferentes criterios de estabilidad y análisis en frecuencia. En primer lugar, 
-                            se utilizó el criterio de estabilidad de Jury y Routh para comprobar que los sistemas 
-                            discretizados mantuvieran sus características de estabilidad sin introducir polos fuera 
-                            del círculo unitario en el dominio Z. Esto permitió validar que la discretización no 
-                            comprometiera el comportamiento estable del sistema.<br> 
-                            Posteriormente, se realizó un análisis detallado del lugar de las raíces (Root Locus) 
-                            para ambas funciones de transferencia, tanto en su versión continua como en su versión 
-                            discretizada. Con esto, se pudo observar cómo la ganancia afecta la ubicación de los 
-                            polos y cómo se mantiene la estructura general del sistema tras la discretización. Además, 
-                            para evaluar el desempeño del controlador en el dominio discreto, se diseñó un lazo de 
-                            realimentación unitario con una ganancia proporcional kp, permitiendo analizar el efecto 
-                            de este control en la estabilidad y respuesta del sistema.<br>                             
-                            Finalmente, se llevó a cabo un análisis en frecuencia a través de los diagramas de Bode 
-                            para verificar los márgenes de ganancia y de fase, asegurando que el sistema discretizado 
-                            conserve un adecuado margen de estabilidad y respuesta ante perturbaciones. El método de 
-                            discretización seleccionado no solo permitió mantener la estabilidad del sistema, sino 
-                            que también preservó el comportamiento dinámico del modelo original, asegurando que las 
-                            características deseadas para el control del motor se mantuvieran tras el proceso de 
-                            digitalización.</p>
+                        <p style="text-align: justify;">En la etapa final del proyecto, el SCARA demostró un funcionamiento 
+                            satisfactorio en sus capacidades básicas: alcanzó puntos específicos con precisión, ejecutó 
+                            movimientos rápidos y fluidos, y mantuvo estabilidad durante su operación. Estos resultados 
+                            validaron que el diseño del controlador PID, la implementación del código y la estructura 
+                            mecánica funcionaban correctamente en conjunto.<br> 
+                            Sin embargo, no logramos cumplir con un requisito clave: la demostración de trayectorias 
+                            mediante un marcador, esfero o lápiz accionado por servomotor. Esta limitación no se debió 
+                            a fallas técnicas del sistema, sino a problemas de organización y gestión del tiempo por 
+                            parte de nuestro equipo. De haber optimizado mejor estos aspectos, habríamos podido completar 
+                            el 100% de los objetivos. A pesar de esto, los resultados obtenidos confirman que el SCARA 
+                            tiene una base técnica sólida y que, con una mejor planificación, sería capaz de ejecutar 
+                            aplicaciones prácticas de trazado sin inconvenientes. El proyecto dejó en evidencia tanto 
+                            el potencial del sistema como áreas críticas de mejora en el trabajo en equipo.</p>
                     </div>
                 </div>
                 <div class="subseccion" onclick="mostrarSubseccion('arquitectura-electronica_control_4', 'control_4')">
                     <h3>Conclusiones</h3>
-                    <div class="card" id="arquitectura-electronica_control_4">
-                        <p style="text-align: justify;">A lo largo del proceso de modelado y control de los motores, 
-                            se realizaron diversas etapas para obtener una representación precisa del sistema y 
-                            seleccionar las mejores estrategias de control. Inicialmente, se determinó la función 
-                            de transferencia de cada motor y se analizaron los errores en el estado estacionario y 
-                            el valor final para ajustar los modelos. Posteriormente, se llevó a cabo la sintonización 
-                            de los sistemas para que sus respuestas se ajustaran lo mejor posible al comportamiento 
-                            real de los motores. Durante este ajuste, se evaluaron diferentes valores y técnicas, 
-                            descartando métodos que no representaban correctamente la dinámica observada. La elección 
-                            final de los parámetros estuvo basada en la estabilidad y en la respuesta temporal del 
-                            sistema.<br>
-                            En la fase de discretización, se evaluaron distintos métodos, como Tustin, Zero Order 
-                            Hold y Euler Forward, determinando que Tustin era la mejor opción debido a que no añadía 
-                            polos adicionales al sistema y mantenía la estabilidad de la representación digital. 
-                            Finalmente, mediante los criterios de estabilidad de Jury y Routh, el análisis del lugar 
-                            geométrico de las raíces y el diagrama de Bode, se validó que el sistema discretizado 
-                            conservaba las características deseadas y era capaz de mantener el control con un ajuste 
-                            adecuado de la ganancia proporcional. Así, se logró un modelo que representa con precisión 
-                            la dinámica de los motores y puede ser utilizado para implementar un control eficiente 
-                            en un entorno real.</p>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+
     <footer>
         <p>Universidad EIA</p>
     </footer>
@@ -1043,7 +1262,10 @@
         reiniciarSeccion('control_1');
         reiniciarSeccion('control_2');
         reiniciarSeccion('control_3');
+        reiniciarSeccion('control_5');
+        reiniciarSeccion('control_6');
         reiniciarSeccion('control_4');
+
     </script>
 </body>
 </html>
